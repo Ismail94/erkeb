@@ -1,0 +1,6 @@
+framework module Pods_erkeb {
+  umbrella header "Pods-erkeb-umbrella.h"
+
+  export *
+  module * { export * }
+}
