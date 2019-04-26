@@ -12,6 +12,12 @@
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
 		4A6565442271F62700219D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565432271F62700219D06 /* Assets.xcassets */; };
 		4A6565472271F62700219D06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565452271F62700219D06 /* LaunchScreen.storyboard */; };
+		4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDA22733245000E3B24 /* GradientView.swift */; };
+		4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */; };
+		4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */; };
+		4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */; };
+		4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */; };
+		4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */; };
 		B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +30,12 @@
 		4A6565462271F62700219D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A6565482271F62700219D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A68E6F7F15CE4B4AEA74080 /* Pods-erkeb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.release.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.release.xcconfig"; sourceTree = "<group>"; };
+		4AB27FDA22733245000E3B24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLocationForm.swift; sourceTree = "<group>"; };
+		4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLocationFormView.swift; sourceTree = "<group>"; };
+		4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBoekEenRitButton.swift; sourceTree = "<group>"; };
+		4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMapButton.swift; sourceTree = "<group>"; };
 		58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +82,9 @@
 		4A65653B2271F62600219D06 /* erkeb */ = {
 			isa = PBXGroup;
 			children = (
+				4AB27FD9227331FB000E3B24 /* Model */,
+				4AB27FD8227331EA000E3B24 /* View */,
+				4AB27FD7227331E1000E3B24 /* Controller */,
 				4A65653C2271F62600219D06 /* AppDelegate.swift */,
 				4A65653E2271F62600219D06 /* ViewController.swift */,
 				4A6565402271F62600219D06 /* Main.storyboard */,
@@ -78,6 +93,33 @@
 				4A6565482271F62700219D06 /* Info.plist */,
 			);
 			path = erkeb;
+			sourceTree = "<group>";
+		};
+		4AB27FD7227331E1000E3B24 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AB27FD8227331EA000E3B24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AB27FDA22733245000E3B24 /* GradientView.swift */,
+				4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */,
+				4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */,
+				4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */,
+				4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */,
+				4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AB27FD9227331FB000E3B24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FDC567CCEEE12AA91B9109E8 /* Frameworks */ = {
@@ -224,8 +266,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */,
+				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A65653F2271F62600219D06 /* ViewController.swift in Sources */,
+				4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */,
 				4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */,
+				4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */,
+				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
+				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
