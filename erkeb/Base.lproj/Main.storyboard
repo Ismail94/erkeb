@@ -41,7 +41,7 @@
                                         <state key="normal" image="MenuBtn"/>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BNJ-fq-DWY">
-                                        <rect key="frame" x="67.5" y="5" width="187" height="30"/>
+                                        <rect key="frame" x="67.5" y="5" width="187" height="30.000000000000014"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FuZ-8y-ktu"/>
                                             <constraint firstAttribute="width" constant="187" id="foN-wp-Z1Y"/>
@@ -215,48 +215,59 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="emU-M8-1gV">
-                                <rect key="frame" x="20" y="343" width="124" height="164.5"/>
+                                <rect key="frame" x="20" y="343" width="180" height="180"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YX-FT-IRK">
-                                        <rect key="frame" x="0.0" y="0.0" width="124" height="28"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                        <state key="normal" title="Profiel" image="IconProfielAsset 7">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YX-FT-IRK">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="31"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Profiel" image="IconProfielAsset 17">
                                             <color key="titleColor" red="0.082352941176470587" green="0.090196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1g-wk-XEa">
-                                        <rect key="frame" x="0.0" y="47" width="124" height="25"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                        <state key="normal" title="Betalingen" image="IconBetalingenAsset 8">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1g-wk-XEa">
+                                        <rect key="frame" x="0.0" y="50" width="180" height="31"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Betalingen" image="IconBetalingAsset 18">
                                             <color key="titleColor" red="0.08235294118" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8v-1d-H9P">
-                                        <rect key="frame" x="0.0" y="91" width="124" height="25"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                        <state key="normal" title="Erkeb Fam" image="IconErkebFamAsset 10">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8v-1d-H9P">
+                                        <rect key="frame" x="0.0" y="100" width="180" height="31"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Erkeb Fam" image="IconErkebFamAsset 19">
                                             <color key="titleColor" red="0.08235294118" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofO-YA-5HL">
-                                        <rect key="frame" x="0.0" y="135" width="124" height="29.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                        <state key="normal" title="Help" image="IconHelpAsset 11">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofO-YA-5HL">
+                                        <rect key="frame" x="0.0" y="150" width="180" height="30"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Help" image="IconHelpAsset 21">
                                             <color key="titleColor" red="0.08235294118" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="164.5" id="5oX-oX-07P"/>
+                                    <constraint firstAttribute="height" constant="180" id="5oX-oX-07P"/>
+                                    <constraint firstAttribute="width" constant="180" id="N91-Yz-lsR"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gR3-XE-Dbj">
-                                <rect key="frame" x="20" y="602" width="213.5" height="30"/>
+                                <rect key="frame" x="20" y="602" width="120" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="408-eB-sfC"/>
                                     <constraint firstAttribute="height" constant="30" id="5P2-f7-26J"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <state key="normal" title="Inloggen / Registreren" image="IconInloggenAsset 13">
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Inloggen" image="IconInloggenAsset 22">
                                     <color key="titleColor" red="0.08235294118" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -282,11 +293,11 @@
     <resources>
         <image name="CenterMapBtnAsset 3" width="60" height="60"/>
         <image name="HeaderLogo" width="305.5" height="53.5"/>
-        <image name="IconBetalingenAsset 8" width="33" height="23"/>
-        <image name="IconErkebFamAsset 10" width="32" height="23"/>
-        <image name="IconHelpAsset 11" width="29.5" height="29.5"/>
-        <image name="IconInloggenAsset 13" width="26.5" height="26.5"/>
-        <image name="IconProfielAsset 7" width="27" height="28"/>
+        <image name="IconBetalingAsset 18" width="22" height="15.5"/>
+        <image name="IconErkebFamAsset 19" width="21" height="15.5"/>
+        <image name="IconHelpAsset 21" width="20" height="20"/>
+        <image name="IconInloggenAsset 22" width="18" height="18"/>
+        <image name="IconProfielAsset 17" width="18.5" height="19"/>
         <image name="MenuBGAsset 6" width="504" height="639"/>
         <image name="MenuBtn" width="39" height="22.5"/>
         <image name="profileimage" width="100" height="100"/>
