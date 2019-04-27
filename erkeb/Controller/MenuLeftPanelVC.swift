@@ -14,11 +14,13 @@ class MenuLeftPanelVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
     }
     
-
-   
-
+    @IBAction func inloggenBtnWasPressed(_ sender: Any) {
+        //Access storyboard
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let inloggenVC = storyboard.instantiateViewController(withIdentifier: "InloggenVC") as? InloggenVC
+        present(inloggenVC!, animated: true, completion: nil)
+    }
+    
 }
