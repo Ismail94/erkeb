@@ -19,7 +19,7 @@ class RoundedBoekEenRitButton: UIButton {
     
     func setupView(){
         originalSize = self.frame
-        self.layer.cornerRadius = 5.0
+        self.layer.cornerRadius = 3.0
         self.layer.shadowOpacity = 0.2
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 5.0

@@ -13,6 +13,8 @@
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
 		4A6565442271F62700219D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565432271F62700219D06 /* Assets.xcassets */; };
 		4A6565472271F62700219D06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565452271F62700219D06 /* LaunchScreen.storyboard */; };
+		4A80116722747C470022C3FA /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116622747C470022C3FA /* ContainerVC.swift */; };
+		4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */; };
 		4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDA22733245000E3B24 /* GradientView.swift */; };
 		4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */; };
 		4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */; };
@@ -32,6 +34,8 @@
 		4A6565462271F62700219D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A6565482271F62700219D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A68E6F7F15CE4B4AEA74080 /* Pods-erkeb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.release.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.release.xcconfig"; sourceTree = "<group>"; };
+		4A80116622747C470022C3FA /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		4AB27FDA22733245000E3B24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLocationForm.swift; sourceTree = "<group>"; };
@@ -84,11 +88,11 @@
 		4A65653B2271F62600219D06 /* erkeb */ = {
 			isa = PBXGroup;
 			children = (
+				4A80116822748B220022C3FA /* Protocols */,
 				4AB27FD9227331FB000E3B24 /* Model */,
 				4AB27FD8227331EA000E3B24 /* View */,
 				4AB27FD7227331E1000E3B24 /* Controller */,
 				4A65653C2271F62600219D06 /* AppDelegate.swift */,
-				4A65653E2271F62600219D06 /* HomeVC.swift */,
 				4A6565402271F62600219D06 /* Main.storyboard */,
 				4A6565432271F62700219D06 /* Assets.xcassets */,
 				4A6565452271F62700219D06 /* LaunchScreen.storyboard */,
@@ -97,10 +101,20 @@
 			path = erkeb;
 			sourceTree = "<group>";
 		};
+		4A80116822748B220022C3FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		4AB27FD7227331E1000E3B24 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4A65653E2271F62600219D06 /* HomeVC.swift */,
 				4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */,
+				4A80116622747C470022C3FA /* ContainerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,6 +287,8 @@
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,
+				4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */,
+				4A80116722747C470022C3FA /* ContainerVC.swift in Sources */,
 				4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */,
 				4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */,
 				4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */,
