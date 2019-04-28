@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>130419810806-njonj4gj1ui8ie6pbvs5fv3k4dhh194p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.130419810806-njonj4gj1ui8ie6pbvs5fv3k4dhh194p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcyGjldQYWqnMNwI4bTChw_ql2jk4gs1U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>130419810806</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ismailabes.erkeb</string>
+	<key>PROJECT_ID</key>
+	<string>erkeb-finalwork</string>
+	<key>STORAGE_BUCKET</key>
+	<string>erkeb-finalwork.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:130419810806:ios:8ce0b5612df17329</string>
+	<key>DATABASE_URL</key>
+	<string>https://erkeb-finalwork.firebaseio.com</string>
+</dict>
+</plist>

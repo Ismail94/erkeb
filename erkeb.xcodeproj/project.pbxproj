@@ -11,6 +11,7 @@
 		4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */; };
 		4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */; };
 		4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */; };
+		4A2FE70F227643DC0098AA1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FE70E227643DC0098AA1B /* GoogleService-Info.plist */; };
 		4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653C2271F62600219D06 /* AppDelegate.swift */; };
 		4A65653F2271F62600219D06 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653E2271F62600219D06 /* HomeVC.swift */; };
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenForm.swift; sourceTree = "<group>"; };
 		4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenButton.swift; sourceTree = "<group>"; };
+		4A2FE70E227643DC0098AA1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A6565392271F62600219D06 /* erkeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erkeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A65653C2271F62600219D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A65653E2271F62600219D06 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4A6565432271F62700219D06 /* Assets.xcassets */,
 				4A6565452271F62700219D06 /* LaunchScreen.storyboard */,
 				4A6565482271F62700219D06 /* Info.plist */,
+				4A2FE70E227643DC0098AA1B /* GoogleService-Info.plist */,
 			);
 			path = erkeb;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A6565472271F62700219D06 /* LaunchScreen.storyboard in Resources */,
+				4A2FE70F227643DC0098AA1B /* GoogleService-Info.plist in Resources */,
 				4A6565442271F62700219D06 /* Assets.xcassets in Resources */,
 				4A6565422271F62600219D06 /* Main.storyboard in Resources */,
 			);
