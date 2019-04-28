@@ -68,12 +68,14 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - RevealingSplashView (0.6.0)
+  - TTSegmentedControl (0.4.7)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - RevealingSplashView
+  - TTSegmentedControl
 
 SPEC CHECKSUMS:
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
@@ -89,7 +91,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
+  TTSegmentedControl: 422a8fab507a02a60050476d69d577052550f592
 
-PODFILE CHECKSUM: ee33d51775cb011d36f9eb207609d25c6afcf768
+PODFILE CHECKSUM: 976d1688c1331e0d6caf20f1215ecb89d7c082dc
 
 COCOAPODS: 1.4.0

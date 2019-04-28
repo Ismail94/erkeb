@@ -26,6 +26,7 @@ class RoundedBoekEenRitButton: UIButton {
         self.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
     
+    //Loading animatie voor de boek een rit knop
     func animateButton(shouldLoad: Bool, withMessage message: String?){
         
         let spinner = UIActivityIndicatorView()

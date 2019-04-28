@@ -11,5 +11,7 @@ target 'erkeb' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'RevealingSplashView'
+    pod 'TTSegmentedControl'
+
 
 end

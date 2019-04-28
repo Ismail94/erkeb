@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */; };
+		4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */; };
+		4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */; };
+		4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */; };
 		4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653C2271F62600219D06 /* AppDelegate.swift */; };
 		4A65653F2271F62600219D06 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653E2271F62600219D06 /* HomeVC.swift */; };
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLeftPanelVC.swift; sourceTree = "<group>"; };
+		4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenForm.swift; sourceTree = "<group>"; };
+		4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenButton.swift; sourceTree = "<group>"; };
 		4A6565392271F62600219D06 /* erkeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erkeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A65653C2271F62600219D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A65653E2271F62600219D06 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 				4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */,
 				4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */,
 				4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */,
+				4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */,
+				4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */,
+				4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +250,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
+				"${BUILT_PRODUCTS_DIR}/TTSegmentedControl/TTSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -249,6 +259,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -300,14 +311,17 @@
 				4A80116F2274E9BE0022C3FA /* InloggenVC.swift in Sources */,
 				4A80116D2274C4EB0022C3FA /* UIViewExt.swift in Sources */,
 				4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */,
+				4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */,
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
+				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,
 				4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */,
 				4A80116722747C470022C3FA /* ContainerVC.swift in Sources */,
 				4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */,
 				4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */,
 				4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */,
+				4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */,
 				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
 				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
 			);
@@ -465,7 +479,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ismailabes.erkeb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -484,7 +498,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ismailabes.erkeb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
