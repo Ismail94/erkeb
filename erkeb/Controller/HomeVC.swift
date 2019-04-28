@@ -18,9 +18,10 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         mapView.delegate = self
+       
     }
+    
     
     @IBAction func boekEenRitBtnWasPressed(_ sender: Any) {
         boekEenRitBtn.animateButton(shouldLoad: true, withMessage: nil)

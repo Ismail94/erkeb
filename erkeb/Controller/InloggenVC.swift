@@ -12,8 +12,16 @@ class InloggenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.bindToKeyboard()
+        
+        //tap somewhere on the screen to hide keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(moveKeyboardTap))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    //stop the editing mode (when you put text inside the field)
+    @objc func moveKeyboardTap(sender: UITapGestureRecognizer){
+        self.view.endEditing(true)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
