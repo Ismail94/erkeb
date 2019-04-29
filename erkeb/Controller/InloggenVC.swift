@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
-class InloggenVC: UIViewController {
+class InloggenVC: UIViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet weak var mailField: RoundedTextField!
+    @IBOutlet weak var wachtwoordField: RoundedTextField!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var aanmeldenBtn: RoundedInloggenButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mailField.delegate = self
+        wachtwoordField.delegate = self
+        
         view.bindToKeyboard()
         
         //tap somewhere on the screen to hide keyboard
@@ -29,6 +40,70 @@ class InloggenVC: UIViewController {
        
     }
     
-  
-
+    @IBAction func aanmeldenBtnWasPressed(_ sender: Any) {
+        
+        //Als tekst is in de beide tekst velden dan wordt er verder een variabele hiervan gemaakt
+        if mailField.text != nil && wachtwoordField.text != nil{
+            aanmeldenBtn.animateButton(shouldLoad: true, withMessage: nil)
+            self.view.endEditing(true)
+            
+            //Variabelen worden hier aangemaakt
+            if let mail = mailField.text, let wachtwoord = wachtwoordField.text{
+                
+                // Functie om de wachtwoord en mail doorsturen naar data
+                Auth.auth().signIn(withEmail: mail, password: wachtwoord, completion: {(authResult, error) in
+                    if  error == nil {
+                        if let user = authResult?.user {
+                            if self.segmentedControl.selectedSegmentIndex == 0{
+                                let userData = ["provider": user.providerID] as [String: Any]
+                                DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
+                            } else {
+                                let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
+                            }
+                        }
+                        print("De gebuiker is met succes ingelogd")
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        if let errorCode = AuthErrorCode(rawValue: error!._code){
+                            switch errorCode {
+                            case .wrongPassword:
+                                print("Oei! Uw wachtwoord is verkeerd, probeer opnieuw.")
+                            default:
+                                print("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                            }
+                        }
+                        //Bepaalde fouten die er kunnen zijn tijdens het inloggen
+                        Auth.auth().createUser(withEmail: mail, password: wachtwoord, completion: { (authResult, error) in
+                            if error != nil {
+                                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                                    switch errorCode{
+                                    case .emailAlreadyInUse:
+                                        print("Dit email adres is al in gebruik, probeer opnieuw.")
+                                    case .invalidEmail:
+                                        print("Uw email adres is ongeldig, probeer opnieuw.")
+                                    default:
+                                        print("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                                    }
+                                }
+                            } else {
+                                    //Als er geen fouten zijn dan ga ik een gebruiker en een bestuurder aanmaken
+                                    if let user = authResult?.user {
+                                        if self.segmentedControl.selectedSegmentIndex == 0 {
+                                            let userData = ["provider": user.providerID] as [String: Any]
+                                            DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
+                                        } else {
+                                            let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                            DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
+                                        }
+                                    }
+                                    print("Er werd een nieuwe gebruiker aangemaakt via Firebase")
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            })
+                        }
+                    })
+                }
+            }
+        }
 }

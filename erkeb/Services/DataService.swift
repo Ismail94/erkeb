@@ -12,7 +12,7 @@ import Firebase
 //Refernce of the default database url
 let DB_BASE = Database.database().reference()
 
-class DataService{
+class DataService {
     static let instance = DataService()
     
     //Verschillende childs aanmaken voor elke URL
@@ -21,7 +21,7 @@ class DataService{
     private var _REF_DRIVERS = DB_BASE.child("drivers")
     private var _REF_TRIPS = DB_BASE.child("trips")
     
-    //hiermee ga ik de cilds kunnen aanspreken en gebruiken
+    //hiermee ga ik de childs kunnen aanspreken en gebruiken
     var REF_BASE: DatabaseReference{
         return _REF_BASE
     }
@@ -39,7 +39,7 @@ class DataService{
     }
     
     //functie waarmee ik een nieuwe user kan aanmaken
-    func createUser(uid: String, userData: Dictionary<String, Any>, isDriver: Bool){
+    func createFirebaseDBUser(uid: String, userData: Dictionary<String, Any>, isDriver: Bool){
         if isDriver{
             REF_DRIVERS.child(uid).updateChildValues(userData)
         } else {

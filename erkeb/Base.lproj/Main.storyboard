@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BNJ-fq-DWY">
-                                        <rect key="frame" x="67.5" y="5" width="187" height="30.000000000000014"/>
+                                        <rect key="frame" x="67.5" y="5" width="187" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FuZ-8y-ktu"/>
                                             <constraint firstAttribute="width" constant="187" id="foN-wp-Z1Y"/>
@@ -394,7 +394,7 @@ aan zonder te registreren!</string>
                                                 </constraints>
                                                 <color key="textColor" red="0.08235294118" green="0.090196078430000007" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="DkL-P2-tTw" customClass="RoundedTextField" customModule="erkeb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="110" width="275" height="40"/>
@@ -417,6 +417,9 @@ aan zonder te registreren!</string>
                                                 <state key="normal" title="Aanmelden">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="aanmeldenBtnWasPressed:" destination="TEQ-mZ-EzH" eventType="touchUpInside" id="Ttw-H8-OrX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -437,6 +440,12 @@ aan zonder te registreren!</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lFQ-me-NUk"/>
                     </view>
+                    <connections>
+                        <outlet property="aanmeldenBtn" destination="aoU-cT-cNb" id="iwr-K3-A7e"/>
+                        <outlet property="mailField" destination="X9X-Wf-wOw" id="laG-I7-6OM"/>
+                        <outlet property="segmentedControl" destination="xep-4r-E1c" id="bqw-Ne-ZwV"/>
+                        <outlet property="wachtwoordField" destination="DkL-P2-tTw" id="taX-ew-5Dj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zo3-rG-xiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
