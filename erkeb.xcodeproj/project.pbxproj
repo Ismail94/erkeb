@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */; };
+		4A25514D227DBA290050FA09 /* AccountTypeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */; };
 		4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */; };
 		4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */; };
 		4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLeftPanelVC.swift; sourceTree = "<group>"; };
+		4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeRounded.swift; sourceTree = "<group>"; };
 		4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenForm.swift; sourceTree = "<group>"; };
 		4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenButton.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */,
 				4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */,
 				4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */,
+				4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
 				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
 				4A2FE71222771ABA0098AA1B /* DataService.swift in Sources */,
+				4A25514D227DBA290050FA09 /* AccountTypeRounded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
