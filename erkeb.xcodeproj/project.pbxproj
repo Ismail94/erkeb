@@ -14,6 +14,7 @@
 		4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */; };
 		4A2FE70F227643DC0098AA1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A2FE70E227643DC0098AA1B /* GoogleService-Info.plist */; };
 		4A2FE71222771ABA0098AA1B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE71122771ABA0098AA1B /* DataService.swift */; };
+		4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A346343227E22B9009E1DC1 /* UpdateService.swift */; };
 		4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653C2271F62600219D06 /* AppDelegate.swift */; };
 		4A65653F2271F62600219D06 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653E2271F62600219D06 /* HomeVC.swift */; };
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenButton.swift; sourceTree = "<group>"; };
 		4A2FE70E227643DC0098AA1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A2FE71122771ABA0098AA1B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		4A346343227E22B9009E1DC1 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		4A6565392271F62600219D06 /* erkeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erkeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A65653C2271F62600219D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A65653E2271F62600219D06 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4A2FE71122771ABA0098AA1B /* DataService.swift */,
+				4A346343227E22B9009E1DC1 /* UpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				4A80116D2274C4EB0022C3FA /* UIViewExt.swift in Sources */,
 				4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */,
 				4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */,
+				4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */,
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
