@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 import RevealingSplashView
 
 class HomeVC: UIViewController{
@@ -40,6 +41,10 @@ class HomeVC: UIViewController{
         
         centerMapOnUserLocation()
         
+        DataService.instance.REF_DRIVERS.observe(.value, with:  { (snapshot) in
+            self.loadDriverAnnotationFromFB()
+        })
+        
         //Set the launchscreen animation
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.squeezeAndZoomOut
@@ -56,6 +61,55 @@ class HomeVC: UIViewController{
         } else{
             manager?.requestAlwaysAuthorization()
         }
+    }
+    
+    func loadDriverAnnotationFromFB(){
+        //coordinaten uploaden van de huidige driver positie
+        DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value, with:  { (snapshot) in
+            if let driverSnapshot = snapshot.children.allObjects as? [DataSnapshot]{
+                for driver in driverSnapshot{
+                    if driver.hasChild("userIsDriver"){
+                        if driver.hasChild("coordinate"){
+                            if driver.childSnapshot(forPath: "isPickupModeEnabled").value as? Bool == true{
+                                if let driverDict = driver.value as? Dictionary <String, AnyObject>{
+                                    let coordinateArray = driverDict["coordinate"] as! NSArray
+                                    let driverCoordinate = CLLocationCoordinate2D(latitude: coordinateArray[0] as! CLLocationDegrees, longitude: coordinateArray[1] as! CLLocationDegrees)
+                                    
+                                    //annotation aanmaken op kaart
+                                    let annotation = DriverAnnotation(coordinate: driverCoordinate, withKey: driver.key)
+                                    
+                                    //hier check ik als er een bestuurder op de kaart en de locaties update
+                                    var driverIsVisible: Bool{
+                                        return self.mapView.annotations.contains(where: { (annotation) -> Bool in
+                                            if let driverAnnotation = annotation as? DriverAnnotation{
+                                                if driverAnnotation.key == driver.key{
+                                                    driverAnnotation.update(annotationPostition: driverAnnotation, withCoordinate: driverCoordinate)
+                                                    return true
+                                                }
+                                            }
+                                            return false
+                                        })
+                                    }
+                                    if !driverIsVisible{
+                                        self.mapView.addAnnotation(annotation)
+                                    }
+                                }
+                            } else {
+                                for annotation in self.mapView.annotations{
+                                    if annotation.isKind(of: DriverAnnotation.self){
+                                        if let annotation = annotation as? DriverAnnotation{
+                                            if annotation.key == driver.key{
+                                                self.mapView.removeAnnotation(annotation)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
     
     //Kaart centereren op de location van de gebruiker
