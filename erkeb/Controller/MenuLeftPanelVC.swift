@@ -88,6 +88,7 @@ class MenuLeftPanelVC: UIViewController {
     @IBAction func switchWasToggled(_ sender: Any) {
         if switchBtn.isOn{
             pickupModeLbl.text = "Pick-up modus aan"
+            //als je aan modus switch dan sluit de menu panel zich en opent automatisch de kaart
             appDelegate.MenuContainerVC.toggleMenuLeftPanel()
             DataService.instance.REF_DRIVERS.child(currentUserId!).updateChildValues(["isPickupModeEnabled" : true])
         } else{

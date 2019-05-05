@@ -16,6 +16,7 @@ class HomeVC: UIViewController{
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var boekEenRitBtn: RoundedBoekEenRitButton!
+    @IBOutlet weak var centerMapBtn: CenterMapButton!
     
     var delegate: CenterVCDelegate?
     
@@ -125,6 +126,7 @@ class HomeVC: UIViewController{
    
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
         centerMapOnUserLocation()
+        centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
     }
     
     @IBAction func menuBtnWasPressed(_ sender: Any) {
@@ -158,6 +160,11 @@ extension HomeVC: MKMapViewDelegate{
             return view
         }
         return nil
+    }
+    
+    //waneer ik door de kaart swipe blijft te knop zichtbaar en als ik erop klik en de locatie centreer dan verdwijnt de knop
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        centerMapBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
 }
 

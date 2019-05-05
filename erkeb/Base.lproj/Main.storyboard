@@ -199,6 +199,7 @@
                     </view>
                     <connections>
                         <outlet property="boekEenRitBtn" destination="uTF-E0-1rI" id="xdM-Ue-ML7"/>
+                        <outlet property="centerMapBtn" destination="gZd-Dh-8RA" id="vA8-lC-W5q"/>
                         <outlet property="mapView" destination="6N4-LG-C9Y" id="3UJ-w8-8WT"/>
                     </connections>
                 </viewController>
