@@ -17,6 +17,7 @@ class HomeVC: UIViewController{
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var boekEenRitBtn: RoundedBoekEenRitButton!
     @IBOutlet weak var centerMapBtn: CenterMapButton!
+    @IBOutlet weak var bestemmingTextField: UITextField!
     
     var delegate: CenterVCDelegate?
     
@@ -25,9 +26,9 @@ class HomeVC: UIViewController{
     var regionRadius: CLLocationDistance = 1000
     
     //Load image for launchscreen
-    
     let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "LaunchScreenIcon")!, iconInitialSize: CGSize(width: 212, height: 254), backgroundImage: UIImage(named: "LaunchScreenBG")!)
-    
+
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class HomeVC: UIViewController{
         checkLocationAuthStatus()
         
         mapView.delegate = self
+        bestemmingTextField.delegate = self
         
         centerMapOnUserLocation()
         
@@ -168,4 +170,81 @@ extension HomeVC: MKMapViewDelegate{
     }
 }
 
+extension HomeVC: UITextFieldDelegate{
+    //hier onder wordt de coden gebruikt wanneer je de textfield selecteer
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField == bestemmingTextField{
+            tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 210)
+            tableView.layer.cornerRadius = 5.0
+            tableView.layer.shadowOpacity = 0.1
+            tableView.layer.shadowColor = UIColor.black.cgColor
+            tableView.layer.shadowRadius = 5.0
+            tableView.layer.shadowOffset = CGSize(width: 0, height: 3)
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            tableView.tag = 94
+            tableView.rowHeight = 60
+            
+            view.addSubview(tableView)
+            animateTableView(shouldShow: true)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == bestemmingTextField{
+            //performSearch()
+            view.endEditing(true)
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        centerMapOnUserLocation()
+        return true
+    }
+    
+    func animateTableView(shouldShow: Bool){
+        if shouldShow{
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tableView.frame = CGRect(x: 20, y: 210, width: self.view.frame.width - 40, height: self.view.frame.height - 210)
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+               self.tableView.frame = CGRect(x: 20, y: self.view.frame.height, width: self.view.frame.width - 40, height: self.view.frame.height - 210)
+            }, completion:  { (finished) in
+                for subview in self.view.subviews {
+                    if subview.tag == 94 {
+                        subview.removeFromSuperview()
+                    }
+                }
+            })
+        }
+    }
+}
 
+extension HomeVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        animateTableView(shouldShow: false)
+        print("Selected!")
+    }
+}
