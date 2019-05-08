@@ -279,4 +279,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         animateTableView(shouldShow: false)
         print("Geselecteerd!")
     }
+    
+    //Voor een betere ervaring als ik scroll in de lijst dan verdwijnt de keyboard
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if bestemmingTextField.text == ""{
+            animateTableView(shouldShow: false)
+        }
+    }
 }
