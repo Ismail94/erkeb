@@ -32,6 +32,8 @@ class HomeVC: UIViewController{
     
     var matchingItems: [MKMapItem] = [MKMapItem]()
     
+    var selectedItemPlaceMark: MKPlacemark? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,6 +172,16 @@ extension HomeVC: MKMapViewDelegate{
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.image = UIImage.init(named: "PassengerAnnotation")
             return view
+        } else if let annotation = annotation as? MKPointAnnotation{
+            let identifier = "destination"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            annotationView?.image = UIImage(named: "DestinationAnnotation")
+            return annotationView
         }
         return nil
     }
@@ -200,6 +212,22 @@ extension HomeVC: MKMapViewDelegate{
                 }
             }
         }
+    }
+    //hier ga ik een pin plaatsen bij de bestemming adres of punt
+    func dropPinFor(placemark: MKPlacemark){
+        selectedItemPlaceMark = placemark
+        
+        //Oude bestemming pin verwijderen als ik een nieuwe bestemming kies
+        for annotation in mapView.annotations {
+            if annotation.isKind(of: MKPointAnnotation.self){
+                mapView.removeAnnotation(annotation)
+            }
+    }
+        //Pin plaatsen bij gevraagde bestemming
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        mapView.addAnnotation(annotation)
+        
     }
 }
 
@@ -301,6 +329,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         //Na het selecteren van de bestemming worden de coordinaten hier opgeslagen
         let selectedMapItem = matchingItems[indexPath.row]
         DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate": [selectedMapItem.placemark.coordinate.latitude,selectedMapItem.placemark.coordinate.longitude]])
+        
+        dropPinFor(placemark: selectedMapItem.placemark)
         
         animateTableView(shouldShow: false)
         print("Geselecteerd!")
