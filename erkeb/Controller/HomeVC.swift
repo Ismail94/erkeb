@@ -32,8 +32,10 @@ class HomeVC: UIViewController{
     
     var matchingItems: [MKMapItem] = [MKMapItem]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         manager = CLLocationManager()
         manager?.delegate = self
@@ -162,6 +164,12 @@ extension HomeVC: MKMapViewDelegate{
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.image = UIImage.init(named: "DriverAnnotation")
             return view
+        } else if let annotation = annotation as? PassengerAnnotation{
+            let identifier = "passenger"
+            var view : MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.image = UIImage.init(named: "PassengerAnnotation")
+            return view
         }
         return nil
     }
@@ -263,7 +271,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "locationCell")
         let mapItem = matchingItems[indexPath.row]
         cell.textLabel?.text = mapItem.name
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        cell.textLabel?.textColor = UIColor(red: 0.66, green: 0.66, blue: 1.0, alpha: 1.0)
+        
         cell.detailTextLabel?.text = mapItem.placemark.title
+        cell.detailTextLabel?.font = UIFont(name: "Avenir Next", size: 12)
+        cell.detailTextLabel?.textColor = UIColor(red: 0.66, green: 0.66, blue: 1.0, alpha: 1.0)
+    
         return cell
     }
     
@@ -276,6 +290,18 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentUserId = Auth.auth().currentUser?.uid
+        let passengerCoordinate = manager?.location?.coordinate
+        let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
+        mapView.addAnnotation(passengerAnnotation)
+        
+        //Adres van bestemming in lijst wordt netjes overgenomen in textfield na selectie
+        bestemmingTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        
+        //Na het selecteren van de bestemming worden de coordinaten hier opgeslagen
+        let selectedMapItem = matchingItems[indexPath.row]
+        DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate": [selectedMapItem.placemark.coordinate.latitude,selectedMapItem.placemark.coordinate.longitude]])
+        
         animateTableView(shouldShow: false)
         print("Geselecteerd!")
     }

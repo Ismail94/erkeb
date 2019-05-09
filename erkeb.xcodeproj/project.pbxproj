@@ -31,6 +31,7 @@
 		4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */; };
 		4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */; };
 		4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */; };
+		4AE4086C22845EBB00694A3A /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */; };
 		B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLocationFormView.swift; sourceTree = "<group>"; };
 		4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBoekEenRitButton.swift; sourceTree = "<group>"; };
 		4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMapButton.swift; sourceTree = "<group>"; };
+		4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 		58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 				4A2FE70C22760B640098AA1B /* RoundedInloggenButton.swift */,
 				4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */,
 				4A346345227E36A7009E1DC1 /* DriverAnnotation.swift */,
+				4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				4A80116D2274C4EB0022C3FA /* UIViewExt.swift in Sources */,
 				4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */,
 				4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */,
+				4AE4086C22845EBB00694A3A /* PassengerAnnotation.swift in Sources */,
 				4A346346227E36A7009E1DC1 /* DriverAnnotation.swift in Sources */,
 				4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */,
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
