@@ -32,6 +32,8 @@ class HomeVC: UIViewController{
     
     var matchingItems: [MKMapItem] = [MKMapItem]()
     
+    var route: MKRoute!
+    
     var selectedItemPlaceMark: MKPlacemark? = nil
     
     
@@ -191,6 +193,16 @@ extension HomeVC: MKMapViewDelegate{
         centerMapBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
     
+    //Polyline op het kaart weergeven door gebruik te maken van de render functie
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineRenderer = MKPolylineRenderer(overlay: self.route.polyline)
+        lineRenderer.strokeColor = UIColor(red: 0.47, green: 0.40, blue: 1.0, alpha: 1.0)
+        lineRenderer.lineWidth = 3.0
+        lineRenderer.lineJoin = .round
+        
+        return lineRenderer
+    }
+    
     //zoek functie voor locaties
     func performSearch(){
         matchingItems.removeAll()
@@ -213,6 +225,7 @@ extension HomeVC: MKMapViewDelegate{
             }
         }
     }
+    
     //hier ga ik een pin plaatsen bij de bestemming adres of punt
     func dropPinFor(placemark: MKPlacemark){
         selectedItemPlaceMark = placemark
@@ -227,7 +240,23 @@ extension HomeVC: MKMapViewDelegate{
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
+    }
+    func searchResultsWithPolyline(forMapItem mapItem:MKMapItem){
+        let request = MKDirections.Request()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = mapItem
+        request.transportType = MKDirectionsTransportType.automobile
         
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            guard let response = response else{
+                print(error.debugDescription)
+                return
+            }
+            self.route = response.routes[0]
+            //Lijn op de kaart toevoegen (via route. kan je de afstand en tijd hebben en printen
+            self.mapView.addOverlay(self.route.polyline)
+        }
     }
 }
 
@@ -330,7 +359,10 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         let selectedMapItem = matchingItems[indexPath.row]
         DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate": [selectedMapItem.placemark.coordinate.latitude,selectedMapItem.placemark.coordinate.longitude]])
         
+        //Pin verwijderen na het ingeven van een nieuwe bestemming
         dropPinFor(placemark: selectedMapItem.placemark)
+        
+        searchResultsWithPolyline(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
         print("Geselecteerd!")
