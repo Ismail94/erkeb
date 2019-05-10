@@ -221,6 +221,8 @@ extension HomeVC: MKMapViewDelegate{
                 for mapItem in response!.mapItems {
                     self.matchingItems.append(mapItem as MKMapItem)
                     self.tableView.reloadData()
+                    //loading view wordt hier niet weergeven
+                    self.shouldShowLoadingView(false)
                 }
             }
         }
@@ -256,6 +258,9 @@ extension HomeVC: MKMapViewDelegate{
             self.route = response.routes[0]
             //Lijn op de kaart toevoegen (via route. kan je de afstand en tijd hebben en printen
             self.mapView.addOverlay(self.route.polyline)
+            
+            //Nadat de ployline wordt gemaakt verdwijnt de loading view
+            self.shouldShowLoadingView(false)
         }
     }
 }
@@ -287,6 +292,7 @@ extension HomeVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == bestemmingTextField{
             performSearch()
+            shouldShowLoadingView(true)
             view.endEditing(true)
         }
         return true
@@ -347,6 +353,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //wanneer je op een item klikt van lijst gebeurt er dit allemaal
+        shouldShowLoadingView(true)
+        
         let currentUserId = Auth.auth().currentUser?.uid
         let passengerCoordinate = manager?.location?.coordinate
         let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)

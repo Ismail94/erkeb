@@ -32,6 +32,7 @@
 		4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */; };
 		4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */; };
 		4AE4086C22845EBB00694A3A /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */; };
+		4AE4086E2285A13400694A3A /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */; };
 		B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBoekEenRitButton.swift; sourceTree = "<group>"; };
 		4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMapButton.swift; sourceTree = "<group>"; };
 		4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
+		4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				4A80116C2274C4EB0022C3FA /* UIViewExt.swift */,
+				4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,
 				4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */,
+				4AE4086E2285A13400694A3A /* UIViewControllerExt.swift in Sources */,
 				4A80116722747C470022C3FA /* ContainerVC.swift in Sources */,
 				4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */,
 				4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */,
