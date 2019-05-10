@@ -303,9 +303,26 @@ extension HomeVC: UITextFieldDelegate{
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        let currentUserId = Auth.auth().currentUser?.uid
+        //verwijder de matchingitems (resultaten) van de bestemming lijst
         matchingItems = []
         tableView.reloadData()
-        //animateTableView(shouldShow: false)
+        
+        //verwijder bestemming coordinaat van de database
+        DataService.instance.REF_USERS.child(currentUserId!).child("tripCoordinate").removeValue()
+        
+        //verwijder de ploylines, passagier annotations en bestemming annotations
+        mapView.removeOverlays(mapView.overlays)
+        for annotation in mapView.annotations{
+            if let annotation = annotation as? MKPointAnnotation{
+                mapView.removeAnnotation(annotation)
+            } else if annotation.isKind(of: PassengerAnnotation.self){
+                mapView.removeAnnotation(annotation)
+            }
+        }
+        
+        //kaart centreren op de locatie van de gebruiker
         centerMapOnUserLocation()
         return true
     }
