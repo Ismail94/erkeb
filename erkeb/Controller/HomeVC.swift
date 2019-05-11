@@ -12,6 +12,7 @@ import CoreLocation
 import Firebase
 import RevealingSplashView
 
+
 class HomeVC: UIViewController{
 
     @IBOutlet weak var mapView: MKMapView!
@@ -27,7 +28,7 @@ class HomeVC: UIViewController{
     
     //Load image for launchscreen
     let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "LaunchScreenIcon")!, iconInitialSize: CGSize(width: 212, height: 254), backgroundImage: UIImage(named: "LaunchScreenBG")!)
-
+    
     var tableView = UITableView()
     
     var matchingItems: [MKMapItem] = [MKMapItem]()
@@ -39,7 +40,6 @@ class HomeVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         manager = CLLocationManager()
         manager?.delegate = self
@@ -129,19 +129,40 @@ class HomeVC: UIViewController{
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    //Zoomen op de verbinding tussen de passagier en bestemming
+    func centerZoomOnLinkPassengerDestination(){
+        let currentUserId = Auth.auth().currentUser?.uid
+        //verbinding weergeven en het centereren
+        DataService.instance.REF_USERS.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let userSnapshot = snapshot.children.allObjects as? [DataSnapshot]{
+                for user in userSnapshot{
+                    if user.key == currentUserId! {
+                        if user.hasChild("tripCoordinate"){
+                            self.zoom(toFitAnnotationsFromMapView: self.mapView)
+                            self.centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                        } else {
+                            self.centerMapOnUserLocation()
+                            self.centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
     
     @IBAction func boekEenRitBtnWasPressed(_ sender: Any) {
         boekEenRitBtn.animateButton(shouldLoad: true, withMessage: nil)
     }
-   
+    
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
-        centerMapOnUserLocation()
-        centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+        centerZoomOnLinkPassengerDestination()
     }
     
     @IBAction func menuBtnWasPressed(_ sender: Any) {
         delegate?.toggleMenuLeftPanel()
     }
+    
 }
 
 extension HomeVC: CLLocationManagerDelegate{
@@ -160,7 +181,7 @@ extension HomeVC: MKMapViewDelegate{
         UpdateService.instance.updateUserLocation(withCoordinate: userLocation.coordinate)
         UpdateService.instance.updateDriverLocation(withCoordinate: userLocation.coordinate)
     }
-    
+    //hier worden de annotation afbeeldingen gezet als MKAnnotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? DriverAnnotation {
             let identifier = "driver"
@@ -199,6 +220,9 @@ extension HomeVC: MKMapViewDelegate{
         lineRenderer.strokeColor = UIColor(red: 0.47, green: 0.40, blue: 1.0, alpha: 1.0)
         lineRenderer.lineWidth = 3.0
         lineRenderer.lineJoin = .round
+        
+        //voordat de lijn terugegeven wordt ga ik gebruik maken van deze functie om uit te zoomen op de verbinding tussen de annotations voor een duidelijk beeld
+        zoom(toFitAnnotationsFromMapView: self.mapView)
         
         return lineRenderer
     }
@@ -243,11 +267,14 @@ extension HomeVC: MKMapViewDelegate{
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
     }
+    
+    //hier wordt de polyline gelinkt met het gevraagde bestemming
     func searchResultsWithPolyline(forMapItem mapItem:MKMapItem){
         let request = MKDirections.Request()
         request.source = MKMapItem.forCurrentLocation()
         request.destination = mapItem
         request.transportType = MKDirectionsTransportType.automobile
+        
         
         let directions = MKDirections(request: request)
         directions.calculate { (response, error) in
@@ -255,6 +282,10 @@ extension HomeVC: MKMapViewDelegate{
                 print(error.debugDescription)
                 return
             }
+            
+//            for route in response.routes{
+//                let eta = route.expectedTravelTime
+//            }
             self.route = response.routes[0]
             //Lijn op de kaart toevoegen (via route. kan je de afstand en tijd hebben en printen
             self.mapView.addOverlay(self.route.polyline)
@@ -262,6 +293,33 @@ extension HomeVC: MKMapViewDelegate{
             //Nadat de ployline wordt gemaakt verdwijnt de loading view
             self.shouldShowLoadingView(false)
         }
+    }
+    
+    //hier zullen de annotations die gelinkt zijn op een beeld te zien zijn doormiddel van het uitzoomen
+    func zoom(toFitAnnotationsFromMapView mapView: MKMapView){
+        //eerst checken als er annotations zijn
+        if mapView.annotations.count == 0 {
+            return
+        }
+        
+        //Voor de annotations te kunnen fitten in het scherm moet ik de coordinaten van de scherm declareren
+        var topLeftCoordinate = CLLocationCoordinate2D(latitude: -90, longitude: 180)
+        var bottomRightCoordinate = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+        
+        for annotation in mapView.annotations where !annotation.isKind(of: DriverAnnotation.self){
+            //hier stel ik de minimum waarde tussen de topleftcoordinate en annotation en die zal gereturnd worden
+            topLeftCoordinate.longitude = fmin(topLeftCoordinate.longitude, annotation.coordinate.longitude)
+            //hier stel ik de maximum waarde tussen de topleftcoordinate en annotation en die zal gereturnd worden
+            topLeftCoordinate.latitude = fmax(topLeftCoordinate.latitude, annotation.coordinate.latitude)
+            bottomRightCoordinate.longitude = fmax(bottomRightCoordinate.longitude, annotation.coordinate.longitude)
+            bottomRightCoordinate.latitude = fmin(bottomRightCoordinate.latitude, annotation.coordinate.latitude)
+        }
+        
+        //nadat ik de coordinaten heb stel ik nu de region in
+        var region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(topLeftCoordinate.latitude - (topLeftCoordinate.latitude - bottomRightCoordinate.latitude) * 0.4, topLeftCoordinate.longitude + (bottomRightCoordinate.longitude - topLeftCoordinate.longitude) * 0.4), span: MKCoordinateSpan(latitudeDelta: fabs(topLeftCoordinate.latitude - bottomRightCoordinate.latitude) * 3.0, longitudeDelta: fabs(bottomRightCoordinate.longitude - topLeftCoordinate.longitude) * 3.0))
+        
+        region = mapView.regionThatFits(region)
+        mapView.setRegion(region, animated: true)
     }
 }
 

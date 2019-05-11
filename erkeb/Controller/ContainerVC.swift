@@ -10,6 +10,7 @@ import UIKit
 // library that provides the Api for core animation: slide menu etc
 import QuartzCore
 
+
 //Check which VC open or collapsed
 enum SlideOutState {
     case collapsed
