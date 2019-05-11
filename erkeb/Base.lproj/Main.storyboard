@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BNJ-fq-DWY">
-                                        <rect key="frame" x="67.5" y="5" width="187" height="30"/>
+                                        <rect key="frame" x="67.5" y="5" width="187" height="30.000000000000014"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FuZ-8y-ktu"/>
                                             <constraint firstAttribute="width" constant="187" id="foN-wp-Z1Y"/>
@@ -533,8 +533,100 @@ aan zonder te registreren!</string>
             </objects>
             <point key="canvasLocation" x="1338.4000000000001" y="28.335832083958024"/>
         </scene>
+        <!--PickupVC View Controller-->
+        <scene sceneID="BQ1-fj-8ny">
+            <objects>
+                <viewController storyboardIdentifier="PickupVC" id="1VV-lK-fWW" customClass="PickupVCViewController" customModule="erkeb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wqj-s3-apx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkL-fA-Tb6">
+                                <rect key="frame" x="20" y="25" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="MdF-pX-NQH"/>
+                                    <constraint firstAttribute="height" constant="30" id="XWJ-LG-iGH"/>
+                                </constraints>
+                                <state key="normal" image="cancelAcceptTripBtnAsset 26"/>
+                                <connections>
+                                    <action selector="cancelBtnWasPressed:" destination="1VV-lK-fWW" eventType="touchUpInside" id="adT-TA-3sh"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AcceptTripBtnAsset 27" translatesAutoresizingMaskIntoConstraints="NO" id="u26-Lt-cUA">
+                                <rect key="frame" x="0.0" y="402" width="375" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="265" id="jX6-Ur-dHz"/>
+                                    <constraint firstAttribute="width" constant="375" id="vIu-IN-Gs2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="APz-pt-AxE">
+                                <rect key="frame" x="94" y="25" width="187" height="30.000000000000014"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="E8v-Dc-u9M"/>
+                                    <constraint firstAttribute="width" constant="187" id="EwX-hi-ljp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="OLu-NV-iR1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="187" id="l1k-IB-2Sg"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6J-yU-dnM" customClass="RoundedBoekEenRitButton" customModule="erkeb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="335" id="Jov-p7-ucW"/>
+                                    <constraint firstAttribute="height" constant="60" id="r8h-Xd-hZK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                                <state key="normal" title="Rit aanvaarden">
+                                    <color key="titleColor" red="0.47450980390000003" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="AcceptRitBtnWasPressed:" destination="1VV-lK-fWW" eventType="touchUpInside" id="z3T-ph-Ui6"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xJP-bu-NAB" customClass="RoundedMapView" customModule="erkeb" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="U9H-Kh-Fvc"/>
+                                    <constraint firstAttribute="width" constant="300" id="zJt-Ta-rs1"/>
+                                </constraints>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zou je deze passagier willen ophalen?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-Y5-BJn">
+                                <rect key="frame" x="30" y="102" width="315" height="23.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.47450980390000003" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lkL-fA-Tb6" firstAttribute="leading" secondItem="8hL-Gq-1La" secondAttribute="leading" constant="20" id="1Jh-TA-Wen"/>
+                            <constraint firstItem="xJP-bu-NAB" firstAttribute="centerX" secondItem="wqj-s3-apx" secondAttribute="centerX" id="7Rt-qc-Kbu"/>
+                            <constraint firstItem="8hL-Gq-1La" firstAttribute="bottom" secondItem="f6J-yU-dnM" secondAttribute="bottom" constant="20" id="9Ia-Ic-ReJ"/>
+                            <constraint firstItem="L1B-Y5-BJn" firstAttribute="top" secondItem="lkL-fA-Tb6" secondAttribute="bottom" constant="47" id="A1C-Td-sNT"/>
+                            <constraint firstItem="u26-Lt-cUA" firstAttribute="leading" secondItem="8hL-Gq-1La" secondAttribute="leading" id="DlC-KM-DSB"/>
+                            <constraint firstItem="APz-pt-AxE" firstAttribute="centerX" secondItem="wqj-s3-apx" secondAttribute="centerX" id="F2G-vP-w0l"/>
+                            <constraint firstItem="xJP-bu-NAB" firstAttribute="centerY" secondItem="wqj-s3-apx" secondAttribute="centerY" id="GOw-sf-1HB"/>
+                            <constraint firstItem="f6J-yU-dnM" firstAttribute="leading" secondItem="8hL-Gq-1La" secondAttribute="leading" constant="20" id="I3K-v7-MrP"/>
+                            <constraint firstItem="u26-Lt-cUA" firstAttribute="trailing" secondItem="8hL-Gq-1La" secondAttribute="trailing" id="IOC-jr-h3r"/>
+                            <constraint firstItem="L1B-Y5-BJn" firstAttribute="centerX" secondItem="wqj-s3-apx" secondAttribute="centerX" id="IYu-nf-ZdY"/>
+                            <constraint firstItem="u26-Lt-cUA" firstAttribute="bottom" secondItem="8hL-Gq-1La" secondAttribute="bottom" id="UCh-g1-5zC"/>
+                            <constraint firstItem="lkL-fA-Tb6" firstAttribute="top" secondItem="8hL-Gq-1La" secondAttribute="top" constant="5" id="o0u-Pq-IDf"/>
+                            <constraint firstItem="APz-pt-AxE" firstAttribute="top" secondItem="8hL-Gq-1La" secondAttribute="top" constant="5" id="r6p-jF-wp5"/>
+                            <constraint firstItem="8hL-Gq-1La" firstAttribute="trailing" secondItem="f6J-yU-dnM" secondAttribute="trailing" constant="20" id="yly-ei-cGa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8hL-Gq-1La"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickupMapView" destination="xJP-bu-NAB" id="DM8-bb-DOY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lru-38-3Ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="28.335832083958024"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AcceptTripBtnAsset 27" width="750" height="531"/>
         <image name="CenterMapBtnAsset 3" width="60" height="60"/>
         <image name="HeaderLogo" width="305.5" height="53.5"/>
         <image name="HomeBGAsset 24" width="750" height="1334"/>
@@ -547,6 +639,7 @@ aan zonder te registreren!</string>
         <image name="IconProfielAsset 17" width="18.5" height="19"/>
         <image name="MenuBGAsset 6" width="504" height="639"/>
         <image name="MenuBtn" width="39" height="22.5"/>
+        <image name="cancelAcceptTripBtnAsset 26" width="50" height="50"/>
         <image name="profileimage" width="100" height="100"/>
         <image name="waarGaJeHeenBTNAsset 5" width="13" height="12.5"/>
     </resources>

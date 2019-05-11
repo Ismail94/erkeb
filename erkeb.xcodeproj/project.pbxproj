@@ -25,6 +25,8 @@
 		4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */; };
 		4A80116D2274C4EB0022C3FA /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116C2274C4EB0022C3FA /* UIViewExt.swift */; };
 		4A80116F2274E9BE0022C3FA /* InloggenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116E2274E9BE0022C3FA /* InloggenVC.swift */; };
+		4A97AB52228730EE005F36B4 /* PickupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB51228730EE005F36B4 /* PickupVC.swift */; };
+		4A97AB542287336C005F36B4 /* RoundedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB532287336C005F36B4 /* RoundedMapView.swift */; };
 		4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDA22733245000E3B24 /* GradientView.swift */; };
 		4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */; };
 		4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */; };
@@ -59,6 +61,8 @@
 		4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		4A80116C2274C4EB0022C3FA /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		4A80116E2274E9BE0022C3FA /* InloggenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InloggenVC.swift; sourceTree = "<group>"; };
+		4A97AB51228730EE005F36B4 /* PickupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupVC.swift; sourceTree = "<group>"; };
+		4A97AB532287336C005F36B4 /* RoundedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedMapView.swift; sourceTree = "<group>"; };
 		4AB27FDA22733245000E3B24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLocationForm.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */,
 				4A80116622747C470022C3FA /* ContainerVC.swift */,
 				4A80116E2274E9BE0022C3FA /* InloggenVC.swift */,
+				4A97AB51228730EE005F36B4 /* PickupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */,
 				4A346345227E36A7009E1DC1 /* DriverAnnotation.swift */,
 				4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */,
+				4A97AB532287336C005F36B4 /* RoundedMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
+				4A97AB52228730EE005F36B4 /* PickupVC.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,
 				4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */,
 				4AE4086E2285A13400694A3A /* UIViewControllerExt.swift in Sources */,
@@ -363,6 +370,7 @@
 				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
 				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
 				4A2FE71222771ABA0098AA1B /* DataService.swift in Sources */,
+				4A97AB542287336C005F36B4 /* RoundedMapView.swift in Sources */,
 				4A25514D227DBA290050FA09 /* AccountTypeRounded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

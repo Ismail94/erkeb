@@ -106,4 +106,5 @@ class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
                 }
             }
         }
+    
 }
