@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class InloggenVC: UIViewController, UITextFieldDelegate {
+class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
 
     
     @IBOutlet weak var mailField: RoundedTextField!
@@ -68,9 +68,9 @@ class InloggenVC: UIViewController, UITextFieldDelegate {
                         if let errorCode = AuthErrorCode(rawValue: error!._code){
                             switch errorCode {
                             case .wrongPassword:
-                                print("Oei! Uw wachtwoord is verkeerd, probeer opnieuw.")
+                                self.showAlert("Oei! Uw wachtwoord is verkeerd, probeer opnieuw.")
                             default:
-                                print("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                                self.showAlert("Er is een onverwachte fout opgetreden, probeer opnieuw.")
                             }
                         }
                         //Bepaalde fouten die er kunnen zijn tijdens het inloggen
@@ -79,11 +79,11 @@ class InloggenVC: UIViewController, UITextFieldDelegate {
                                 if let errorCode = AuthErrorCode(rawValue: error!._code) {
                                     switch errorCode{
                                     case .emailAlreadyInUse:
-                                        print("Dit email adres is al in gebruik, probeer opnieuw.")
+                                        self.showAlert("Dit email adres is al in gebruik, probeer opnieuw.")
                                     case .invalidEmail:
-                                        print("Uw email adres is ongeldig, probeer opnieuw.")
+                                        self.showAlert("Uw email adres is ongeldig, probeer opnieuw.")
                                     default:
-                                        print("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                                        self.showAlert("Er is een onverwachte fout opgetreden, probeer opnieuw.")
                                     }
                                 }
                             } else {

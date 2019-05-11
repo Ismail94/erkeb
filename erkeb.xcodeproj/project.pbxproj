@@ -33,6 +33,7 @@
 		4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */; };
 		4AE4086C22845EBB00694A3A /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */; };
 		4AE4086E2285A13400694A3A /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */; };
+		4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5EB972286FD2A00C1E183 /* Alertable.swift */; };
 		B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		4AD5C3842273613D00CA3A92 /* CenterMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMapButton.swift; sourceTree = "<group>"; };
 		4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 		4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		4AF5EB972286FD2A00C1E183 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */,
+				4AF5EB972286FD2A00C1E183 /* Alertable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				4A346346227E36A7009E1DC1 /* DriverAnnotation.swift in Sources */,
 				4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */,
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
+				4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,

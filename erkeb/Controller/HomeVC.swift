@@ -13,7 +13,7 @@ import Firebase
 import RevealingSplashView
 
 
-class HomeVC: UIViewController{
+class HomeVC: UIViewController, Alertable{
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var boekEenRitBtn: RoundedBoekEenRitButton!
@@ -129,7 +129,7 @@ class HomeVC: UIViewController{
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    //Zoomen op de verbinding tussen de passagier en bestemming
+    //Uitzoomen op de verbinding tussen de passagier en bestemming
     func centerZoomOnLinkPassengerDestination(){
         let currentUserId = Auth.auth().currentUser?.uid
         //verbinding weergeven en het centereren
@@ -238,9 +238,9 @@ extension HomeVC: MKMapViewDelegate{
         
         search.start { (response, error) in
             if error != nil {
-                print(error.debugDescription)
+                self.showAlert("Er is een onverwachte fout opgetreden, probeer opnieuw.")
             }else if response!.mapItems.count == 0 {
-                print("Geen resultaten")
+                self.showAlert("Geen resultaten gevonden! 🙆‍♂️ Probeer opnieuw met een andere locatie")
             } else {
                 for mapItem in response!.mapItems {
                     self.matchingItems.append(mapItem as MKMapItem)
@@ -279,7 +279,7 @@ extension HomeVC: MKMapViewDelegate{
         let directions = MKDirections(request: request)
         directions.calculate { (response, error) in
             guard let response = response else{
-                print(error.debugDescription)
+                self.showAlert(error.debugDescription)
                 return
             }
             
