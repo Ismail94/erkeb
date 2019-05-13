@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BNJ-fq-DWY">
-                                        <rect key="frame" x="67.5" y="5" width="187" height="30.000000000000014"/>
+                                        <rect key="frame" x="67.5" y="5" width="187" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FuZ-8y-ktu"/>
                                             <constraint firstAttribute="width" constant="187" id="foN-wp-Z1Y"/>
@@ -533,7 +533,7 @@ aan zonder te registreren!</string>
             </objects>
             <point key="canvasLocation" x="1338.4000000000001" y="28.335832083958024"/>
         </scene>
-        <!--PickupVC View Controller-->
+        <!--PickupVC-->
         <scene sceneID="BQ1-fj-8ny">
             <objects>
                 <viewController storyboardIdentifier="PickupVC" id="1VV-lK-fWW" customClass="PickupVC" customModule="erkeb" customModuleProvider="target" sceneMemberID="viewController">
@@ -552,7 +552,7 @@ aan zonder te registreren!</string>
                                     <action selector="cancelBtnWasPressed:" destination="1VV-lK-fWW" eventType="touchUpInside" id="adT-TA-3sh"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AcceptTripBtnAsset 27" translatesAutoresizingMaskIntoConstraints="NO" id="u26-Lt-cUA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AcceptTripBtnAsset 27" translatesAutoresizingMaskIntoConstraints="NO" id="u26-Lt-cUA">
                                 <rect key="frame" x="0.0" y="402" width="375" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="jX6-Ur-dHz"/>
@@ -560,7 +560,7 @@ aan zonder te registreren!</string>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="APz-pt-AxE">
-                                <rect key="frame" x="94" y="25" width="187" height="30.000000000000014"/>
+                                <rect key="frame" x="94" y="25" width="187" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="E8v-Dc-u9M"/>
                                     <constraint firstAttribute="width" constant="187" id="EwX-hi-ljp"/>
@@ -570,7 +570,7 @@ aan zonder te registreren!</string>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6J-yU-dnM" customClass="RoundedBoekEenRitButton" customModule="erkeb" customModuleProvider="target">
                                 <rect key="frame" x="20" y="587" width="335" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="Jov-p7-ucW"/>
                                     <constraint firstAttribute="height" constant="60" id="r8h-Xd-hZK"/>

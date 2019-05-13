@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class PickupVC: UIViewController {
 
@@ -16,10 +17,12 @@ class PickupVC: UIViewController {
     var pickupCoordinate: CLLocationCoordinate2D!
     var passengerKey: String!
     
-    var regionRadius: CLLocationDistance = 2000
+    var regionRadius: CLLocationDistance = 1000
     var pin: MKPlacemark? = nil
     
     var locationPlacemark : MKPlacemark!
+    
+    var currentUserId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,17 @@ class PickupVC: UIViewController {
         locationPlacemark = MKPlacemark(coordinate: pickupCoordinate)
         dropPinFor(placemark: locationPlacemark)
         centerMapOnLocation(location: locationPlacemark.location!)
+        
+        //Als een bestuurder een rit aanvaard dan wordt deze bij de andere bestuurders niet meer zichtbaar
+        DataService.instance.REF_TRIPS.child(passengerKey).observe(.value, with: { (tripSnapshot) in
+            if tripSnapshot.exists(){
+                if tripSnapshot.childSnapshot(forPath: "tripIsAccepted").value as? Bool == true{
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
     }
     
     func initData(coordinate: CLLocationCoordinate2D, passengerKey: String){
@@ -36,9 +50,12 @@ class PickupVC: UIViewController {
     }
     
     @IBAction func AcceptRitBtnWasPressed(_ sender: Any) {
+        UpdateService.instance.driverAcceptTrip(withPassengerKey: passengerKey, forDriverKey: currentUserId!)
+        presentingViewController?.shouldShowLoadingView(true)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
