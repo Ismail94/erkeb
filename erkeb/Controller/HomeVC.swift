@@ -37,7 +37,6 @@ class HomeVC: UIViewController, Alertable{
     
     var selectedItemPlaceMark: MKPlacemark? = nil
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +62,30 @@ class HomeVC: UIViewController, Alertable{
         
         //Call to stop the animation
         revealingSplashView.heartAttack = true
+        
+        //hier wordt de oppak plaats van de passagier doorgegeven naar de bestuurder zodat hij die kan oppaken (scherm PickupVC)
+        UpdateService.instance.observeTrips { (tripDict) in
+            if let tripDict = tripDict {
+                let currentUserId = Auth.auth().currentUser?.uid
+                let pickupCoordinateArray = tripDict["pickupCoordinate"] as! NSArray
+                let tripKey = tripDict["passengerKey"] as! String
+                let acceptanceStatus = tripDict["tripIsAccepted"] as! Bool
+                
+                if acceptanceStatus == false {
+                    DataService.instance.driverIsAvailable(key: currentUserId!, handler: { (available) in
+                        if let available = available {
+                            if available == true {
+                                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                let pickupVC = storyboard.instantiateViewController(withIdentifier: "PickupVC") as? PickupVC
+                                pickupVC?.initData(coordinate: CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees), passengerKey: tripKey)
+                                
+                                self.present(pickupVC!, animated: true, completion: nil)
+                            }
+                        }
+                    })
+                }
+            }
+        }
     }
     
     //hier kijk ik als er al authorisatie zo niet dan vraag ik het terug
@@ -152,7 +175,11 @@ class HomeVC: UIViewController, Alertable{
     
     
     @IBAction func boekEenRitBtnWasPressed(_ sender: Any) {
+        UpdateService.instance.updateTripsWithCoordinatesUponRequest()
         boekEenRitBtn.animateButton(shouldLoad: true, withMessage: nil)
+        
+        self.view.endEditing(true)
+        bestemmingTextField.isUserInteractionEnabled = false
     }
     
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {

@@ -536,7 +536,7 @@ aan zonder te registreren!</string>
         <!--PickupVC View Controller-->
         <scene sceneID="BQ1-fj-8ny">
             <objects>
-                <viewController storyboardIdentifier="PickupVC" id="1VV-lK-fWW" customClass="PickupVCViewController" customModule="erkeb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickupVC" id="1VV-lK-fWW" customClass="PickupVC" customModule="erkeb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wqj-s3-apx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

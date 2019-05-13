@@ -46,4 +46,23 @@ class DataService {
             REF_USERS.child(uid).updateChildValues(userData)
         }
     }
+    
+    //check als de pickup-modus aan of uit is zodat er een rit kan dooregestuurd worden naar bestuurder
+    func driverIsAvailable(key: String, handler: @escaping(_ status: Bool?) -> Void){
+        DataService.instance._REF_DRIVERS.observeSingleEvent(of: .value, with:  { (snapshot) in
+            if let driverSnapshot = snapshot.children.allObjects as? [DataSnapshot]{
+                for driver in driverSnapshot{
+                    if driver.key == key{
+                        if driver.childSnapshot(forPath: "isPickupModeEnabled").value as? Bool == true{
+                            if driver.childSnapshot(forPath: "driverIsOnTrip").value as? Bool == true{
+                                handler(false)
+                            } else {
+                                handler(true)
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
 }
