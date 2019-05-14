@@ -88,6 +88,30 @@ class HomeVC: UIViewController, Alertable{
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let currentUserId = Auth.auth().currentUser?.uid
+        
+        DataService.instance.driverIsAvailable(key: currentUserId!, handler:  { (status) in
+            if status == false {
+                DataService.instance.REF_TRIPS.observeSingleEvent(of: .value, with: { (tripSnapshot) in
+                    if let tripSnapshot = tripSnapshot.children.allObjects as? [DataSnapshot] {
+                        for trip in tripSnapshot {
+                            if trip.childSnapshot(forPath: "driverKey").value as? String == currentUserId! {
+                                let pickupCoordinateArray = trip.childSnapshot(forPath: "pickupCoordinate").value as! NSArray
+                                let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees)
+                                let pickupPlacemark = MKPlacemark(coordinate: pickupCoordinate)
+                                
+                                self.dropPinFor(placemark: pickupPlacemark)
+                                self.searchResultsWithPolyline(forMapItem: MKMapItem(placemark: pickupPlacemark))
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    }
+    
     //hier kijk ik als er al authorisatie zo niet dan vraag ik het terug
     func checkLocationAuthStatus(){
         if CLLocationManager.authorizationStatus() == .authorizedAlways{
@@ -248,6 +272,9 @@ extension HomeVC: MKMapViewDelegate{
         lineRenderer.lineWidth = 3.0
         lineRenderer.lineJoin = .round
         
+        //loading view niet meer zichtbaar maken
+        shouldShowLoadingView(false)
+        
         //voordat de lijn terugegeven wordt ga ik gebruik maken van deze functie om uit te zoomen op de verbinding tussen de annotations voor een duidelijk beeld
         zoom(toFitAnnotationsFromMapView: self.mapView)
         
@@ -318,7 +345,8 @@ extension HomeVC: MKMapViewDelegate{
             self.mapView.addOverlay(self.route.polyline)
             
             //Nadat de ployline wordt gemaakt verdwijnt de loading view
-            self.shouldShowLoadingView(false)
+            let delegate = AppDelegate.getAppDelegate()
+             delegate.window?.rootViewController?.shouldShowLoadingView(false)
         }
     }
     
