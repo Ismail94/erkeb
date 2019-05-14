@@ -19,6 +19,7 @@ class HomeVC: UIViewController, Alertable{
     @IBOutlet weak var boekEenRitBtn: RoundedBoekEenRitButton!
     @IBOutlet weak var centerMapBtn: CenterMapButton!
     @IBOutlet weak var bestemmingTextField: UITextField!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     var delegate: CenterVCDelegate?
     
@@ -110,6 +111,26 @@ class HomeVC: UIViewController, Alertable{
                 })
             }
         })
+        DataService.instance.REF_TRIPS.observe(.childRemoved, with:  { (removedTripSnapshot) in
+            let removedTripDict = removedTripSnapshot.value as? [String: AnyObject]
+            if removedTripDict? ["driverKey"] != nil {
+                DataService.instance.REF_DRIVERS.child(removedTripDict?["driverKey"] as! String).updateChildValues(["driverIsOnTrip": false])
+            }
+                DataService.instance.userIsDriver(userKey: currentUserId!, handler: { (isDriver) in
+                    if isDriver == true {
+                        //Overlays en annotations verwijderen + boek een rit en annuleer knop verbergen
+                    } else {
+                        self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                        self.boekEenRitBtn.animateButton(shouldLoad: false, withMessage: "Boek een rit")
+                        
+                        self.bestemmingTextField.isUserInteractionEnabled = true
+                        self.bestemmingTextField.text = ""
+                        
+                        //verwijder alle annotations en overlays
+                        self.centerMapOnUserLocation()
+                    }
+                })
+        })
     }
     
     //hier kijk ik als er al authorisatie zo niet dan vraag ik het terug
@@ -195,6 +216,24 @@ class HomeVC: UIViewController, Alertable{
                 }
             }
         })
+    }
+    
+    ////--------BUTTONS-----------------------------------------------
+    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+        let currentUserId = Auth.auth().currentUser?.uid
+        DataService.instance.driverIsOnTrip(driverKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+            if isOnTrip == true {
+                UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
+            }
+        }
+        
+        DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!) { (isOnTrip, driverKey, tripKey) in
+            if isOnTrip == true {
+                UpdateService.instance.cancelTrip(withPassengerKey: currentUserId!, forDriverKey: driverKey!)
+            } else {
+                UpdateService.instance.cancelTrip(withPassengerKey: currentUserId!, forDriverKey: nil)
+            }
+        }
     }
     
     

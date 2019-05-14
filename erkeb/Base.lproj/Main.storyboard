@@ -171,6 +171,21 @@
                                     <constraint firstAttribute="height" constant="61" id="KTv-BC-uQI"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-ZA-a6k">
+                                <rect key="frame" x="273" y="193" width="70" height="35"/>
+                                <color key="backgroundColor" red="0.47450980390000003" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="1du-5G-ftp"/>
+                                    <constraint firstAttribute="height" constant="35" id="fBh-uM-KyH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Fy-lt-eWr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -183,15 +198,18 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gZd-Dh-8RA" secondAttribute="trailing" constant="20" id="a6H-Pv-Uxl"/>
                             <constraint firstItem="r7F-SO-WCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="bkC-ky-19O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lfb-zD-NNc" secondAttribute="trailing" constant="20" id="h45-Vy-zy4"/>
+                            <constraint firstItem="Czp-ZA-a6k" firstAttribute="top" secondItem="lfb-zD-NNc" secondAttribute="bottom" id="hSW-7O-icP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r7F-SO-WCZ" secondAttribute="trailing" constant="20" id="i8C-qr-uWm"/>
                             <constraint firstItem="jzL-yB-Tuh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m8O-z3-WMx"/>
                             <constraint firstItem="lfb-zD-NNc" firstAttribute="top" secondItem="jzL-yB-Tuh" secondAttribute="bottom" constant="25" id="opQ-Vh-DBQ"/>
                             <constraint firstItem="r7F-SO-WCZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pEx-xP-Ssh"/>
                             <constraint firstItem="jzL-yB-Tuh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pNJ-Mz-9R7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IKX-KH-WCe" secondAttribute="trailing" constant="32" id="ptO-zq-tYz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Czp-ZA-a6k" secondAttribute="trailing" constant="32" id="sDA-j7-kQ0"/>
                             <constraint firstItem="B8f-V4-kE5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sSj-dm-SDL"/>
                             <constraint firstItem="lfb-zD-NNc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sru-tL-5Ua"/>
                             <constraint firstItem="6N4-LG-C9Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ueV-JL-4z5"/>
+                            <constraint firstItem="Czp-ZA-a6k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="273" id="xF1-rq-8ak"/>
                             <constraint firstItem="6N4-LG-C9Y" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="z9s-BU-vuo"/>
                             <constraint firstItem="B8f-V4-kE5" firstAttribute="top" secondItem="gZd-Dh-8RA" secondAttribute="bottom" constant="10" id="zCh-GB-zqV"/>
                         </constraints>
@@ -200,6 +218,7 @@
                     <connections>
                         <outlet property="bestemmingTextField" destination="Poz-WN-1GI" id="ht4-jJ-Tbz"/>
                         <outlet property="boekEenRitBtn" destination="uTF-E0-1rI" id="xdM-Ue-ML7"/>
+                        <outlet property="cancelBtn" destination="Czp-ZA-a6k" id="3ai-qu-s6s"/>
                         <outlet property="centerMapBtn" destination="gZd-Dh-8RA" id="vA8-lC-W5q"/>
                         <outlet property="mapView" destination="6N4-LG-C9Y" id="3UJ-w8-8WT"/>
                     </connections>
@@ -570,7 +589,7 @@ aan zonder te registreren!</string>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6J-yU-dnM" customClass="RoundedBoekEenRitButton" customModule="erkeb" customModuleProvider="target">
                                 <rect key="frame" x="20" y="587" width="335" height="60"/>
-                                <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="Jov-p7-ucW"/>
                                     <constraint firstAttribute="height" constant="60" id="r8h-Xd-hZK"/>
