@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */; };
+		4A1DBEA4228C3C2D008CC10B /* RoundedCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DBEA3228C3C2D008CC10B /* RoundedCancelButton.swift */; };
 		4A25514D227DBA290050FA09 /* AccountTypeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */; };
 		4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */; };
 		4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */; };
@@ -27,7 +28,6 @@
 		4A80116F2274E9BE0022C3FA /* InloggenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116E2274E9BE0022C3FA /* InloggenVC.swift */; };
 		4A97AB52228730EE005F36B4 /* PickupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB51228730EE005F36B4 /* PickupVC.swift */; };
 		4A97AB542287336C005F36B4 /* RoundedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB532287336C005F36B4 /* RoundedMapView.swift */; };
-		4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDA22733245000E3B24 /* GradientView.swift */; };
 		4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */; };
 		4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */; };
 		4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */; };
@@ -41,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		4A1ADF1122739DD300E6F187 /* MenuLeftPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLeftPanelVC.swift; sourceTree = "<group>"; };
+		4A1DBEA3228C3C2D008CC10B /* RoundedCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCancelButton.swift; sourceTree = "<group>"; };
 		4A25514C227DBA290050FA09 /* AccountTypeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeRounded.swift; sourceTree = "<group>"; };
 		4A2FE7082275FEFB0098AA1B /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		4A2FE70A22760AFA0098AA1B /* RoundedInloggenForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedInloggenForm.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		4A80116E2274E9BE0022C3FA /* InloggenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InloggenVC.swift; sourceTree = "<group>"; };
 		4A97AB51228730EE005F36B4 /* PickupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupVC.swift; sourceTree = "<group>"; };
 		4A97AB532287336C005F36B4 /* RoundedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedMapView.swift; sourceTree = "<group>"; };
-		4AB27FDA22733245000E3B24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLocationForm.swift; sourceTree = "<group>"; };
 		4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLocationFormView.swift; sourceTree = "<group>"; };
@@ -176,7 +176,6 @@
 		4AB27FD8227331EA000E3B24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AB27FDA22733245000E3B24 /* GradientView.swift */,
 				4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */,
 				4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */,
 				4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */,
@@ -189,6 +188,7 @@
 				4A346345227E36A7009E1DC1 /* DriverAnnotation.swift */,
 				4AE4086B22845EBB00694A3A /* PassengerAnnotation.swift */,
 				4A97AB532287336C005F36B4 /* RoundedMapView.swift */,
+				4A1DBEA3228C3C2D008CC10B /* RoundedCancelButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 				4A346346227E36A7009E1DC1 /* DriverAnnotation.swift in Sources */,
 				4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */,
 				4A1ADF1222739DD300E6F187 /* MenuLeftPanelVC.swift in Sources */,
+				4A1DBEA4228C3C2D008CC10B /* RoundedCancelButton.swift in Sources */,
 				4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
@@ -365,7 +366,6 @@
 				4A80116722747C470022C3FA /* ContainerVC.swift in Sources */,
 				4AD5C3852273613D00CA3A92 /* CenterMapButton.swift in Sources */,
 				4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */,
-				4AB27FDB22733245000E3B24 /* GradientView.swift in Sources */,
 				4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */,
 				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
 				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
