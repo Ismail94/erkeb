@@ -54,8 +54,10 @@ class HomeVC: UIViewController, Alertable{
         centerMapOnUserLocation()
         
         DataService.instance.REF_DRIVERS.observe(.value, with:  { (snapshot) in
-            self.loadDriverAnnotationFromFB()
+        self.loadDriverAnnotationFromFB()
+            
         let currentUserId = Auth.auth().currentUser?.uid
+
             DataService.instance.passengerIsOnTrip(passengerKey: currentUserId! , handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
                     self.zoom(toFitAnnotationsFromMapView: self.mapView, forActiveTripWithDriver: true, withKey: driverKey)
@@ -96,12 +98,42 @@ class HomeVC: UIViewController, Alertable{
         }
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let currentUserId = Auth.auth().currentUser?.uid
+
+        if currentUserId != nil {
+            print("Contains a value")
+        } else {
+            print("Doesn’t contain a value.")
+        }
         
-        DataService.instance.driverIsAvailable(key: currentUserId!, handler:  { (status) in
-            if status == false {
+        DataService.instance.REF_TRIPS.observe(.childRemoved, with: { (removedTripSnapshot) in
+            let removedTripDict = removedTripSnapshot.value as? [String: AnyObject]
+            if removedTripDict?["driverKey"] != nil {
+                DataService.instance.REF_DRIVERS.child(removedTripDict?["driverKey"] as! String).updateChildValues(["driverIsOnTrip": false])
+            }
+            
+            DataService.instance.userIsDriver(userKey: currentUserId!, handler: { (isDriver) in
+                if isDriver == true {
+                    self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
+                } else {
+                    self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                    self.boekEenRitBtn.animateButton(shouldLoad: false, withMessage: "Boek een rit")
+                    
+                    self.bestemmingTextField.isUserInteractionEnabled = true
+                    self.bestemmingTextField.text = ""
+                    
+                    self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
+                    self.centerMapOnUserLocation()
+                }
+            })
+        })
+
+        DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
+            if isOnTrip == true {
                 DataService.instance.REF_TRIPS.observeSingleEvent(of: .value, with: { (tripSnapshot) in
                     if let tripSnapshot = tripSnapshot.children.allObjects as? [DataSnapshot] {
                         for trip in tripSnapshot {
@@ -118,29 +150,7 @@ class HomeVC: UIViewController, Alertable{
                 })
             }
         })
-        
-        connectUserAndDriverForTrip()
-        
-        DataService.instance.REF_TRIPS.observe(.childRemoved, with:  { (removedTripSnapshot) in
-            let removedTripDict = removedTripSnapshot.value as? [String: AnyObject]
-            if removedTripDict? ["driverKey"] != nil {
-                DataService.instance.REF_DRIVERS.child(removedTripDict?["driverKey"] as! String).updateChildValues(["driverIsOnTrip": false])
-            }
-                DataService.instance.userIsDriver(userKey: currentUserId!, handler: { (isDriver) in
-                    if isDriver == true {
-                        self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
-                    } else {
-                        self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
-                        self.boekEenRitBtn.animateButton(shouldLoad: false, withMessage: "Boek een rit")
-                        
-                        self.bestemmingTextField.isUserInteractionEnabled = true
-                        self.bestemmingTextField.text = ""
-                        
-                        self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
-                        self.centerMapOnUserLocation()
-                    }
-                })
-        })
+            connectUserAndDriverForTrip()
     }
     
     //hier kijk ik als er al authorisatie zo niet dan vraag ik het terug
@@ -203,21 +213,22 @@ class HomeVC: UIViewController, Alertable{
     
     func connectUserAndDriverForTrip() {
         let currentUserId = Auth.auth().currentUser?.uid
+
         DataService.instance.userIsDriver(userKey: currentUserId!) { (status) in
             if status == false {
                 DataService.instance.REF_TRIPS.child(currentUserId!).observe(.value, with: { (tripSnapshot) in
                     let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject>
-                    
+
                     if tripDict?["tripIsAccepted"] as? Bool == true {
                         self.removeOverlaysAndAnnotations(forDrivers: false, forPassengers: true)
-                        
+
                         let driverId = tripDict?["driverKey"] as! String
-                        
+
                         let pickupCoordinateArray = tripDict?["pickupCoordinate"] as! NSArray
                         let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees)
                         let pickupPlacemark = MKPlacemark(coordinate: pickupCoordinate)
-                        let pickUpMapItem = MKMapItem(placemark: pickupPlacemark)
-                        
+                        let pickupMapItem = MKMapItem(placemark: pickupPlacemark)
+
                         DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value, with: { (driverSnapshot) in
                             if let driverSnapshot = driverSnapshot.children.allObjects as? [DataSnapshot] {
                                 for driver in driverSnapshot {
@@ -226,12 +237,12 @@ class HomeVC: UIViewController, Alertable{
                                         let driverCoordinate = CLLocationCoordinate2D(latitude: driverCoordinateArray[0] as! CLLocationDegrees, longitude: driverCoordinateArray[1] as! CLLocationDegrees)
                                         let driverPlacemark = MKPlacemark(coordinate: driverCoordinate)
                                         let driverMapItem = MKMapItem(placemark: driverPlacemark)
-                                        
+
                                         let passengerAnnotation = PassengerAnnotation(coordinate: pickupCoordinate, key: currentUserId!)
 //                                        let driverAnnotation = DriverAnnotation(coordinate: driverCoordinate, withKey: driverId)
-                                        
+
                                         self.mapView.addAnnotation(passengerAnnotation)
-                                        self.searchResultsWithPolyline(forOriginMapItem: driverMapItem, withDestinationMapItem: pickUpMapItem)
+                                        self.searchResultsWithPolyline(forOriginMapItem: driverMapItem, withDestinationMapItem: pickupMapItem)
                                         self.boekEenRitBtn.animateButton(shouldLoad: false, withMessage: "Bestuurder is onderweg")
                                         self.boekEenRitBtn.isUserInteractionEnabled = false
                                     }
@@ -301,7 +312,24 @@ class HomeVC: UIViewController, Alertable{
     }
     
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
-        centerZoomOnLinkPassengerDestination()
+//        centerZoomOnLinkPassengerDestination()
+        let currentUserId = Auth.auth().currentUser?.uid
+        
+        DataService.instance.REF_USERS.observeSingleEvent(of: .value, with:  { (snapshot) in
+            if let userSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for user in userSnapshot {
+                    if user.key == currentUserId! {
+                        if user.hasChild("tripCoordinate") {
+                            self.zoom(toFitAnnotationsFromMapView: self.mapView, forActiveTripWithDriver: false, withKey: nil)
+                            self.centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                        } else {
+                            self.centerMapOnUserLocation()
+                            self.centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                        }
+                    }
+                }
+            }
+        })
     }
     
     @IBAction func menuBtnWasPressed(_ sender: Any) {
@@ -388,12 +416,10 @@ extension HomeVC: MKMapViewDelegate{
         lineRenderer.strokeColor = UIColor(red: 0.47, green: 0.40, blue: 1.0, alpha: 1.0)
         lineRenderer.lineWidth = 3.0
         lineRenderer.lineJoin = .round
+        lineRenderer.lineCap = .butt
         
         //loading view niet meer zichtbaar maken
         shouldShowLoadingView(false)
-        
-        //voordat de lijn terugegeven wordt ga ik gebruik maken van deze functie om uit te zoomen op de verbinding tussen de annotations voor een duidelijk beeld
-        zoom(toFitAnnotationsFromMapView: self.mapView, forActiveTripWithDriver: false, withKey: nil )
         
         return lineRenderer
     }
@@ -450,8 +476,10 @@ extension HomeVC: MKMapViewDelegate{
         }
         request.destination = destinationMapItem
         request.transportType = MKDirectionsTransportType.automobile
+        request.requestsAlternateRoutes = true
         
         let directions = MKDirections(request: request)
+        
         directions.calculate { (response, error) in
             guard let response = response else{
                 self.showAlert(error.debugDescription)
@@ -461,8 +489,10 @@ extension HomeVC: MKMapViewDelegate{
             
             if self.mapView.overlays.count == 0 {
                 //Lijn op de kaart toevoegen (via route. kan je de afstand en tijd hebben en printen
-                self.mapView.addOverlay(self.route.polyline)
+                self.mapView.addOverlay(self.route!.polyline)
             }
+            
+            self.zoom(toFitAnnotationsFromMapView: self.mapView, forActiveTripWithDriver: false, withKey: nil)
             
             //Nadat de ployline wordt gemaakt verdwijnt de loading view
             let delegate = AppDelegate.getAppDelegate()
@@ -472,6 +502,7 @@ extension HomeVC: MKMapViewDelegate{
     
     //hier zullen de annotations die gelinkt zijn op een beeld te zien zijn doormiddel van het uitzoomen
     func zoom(toFitAnnotationsFromMapView mapView: MKMapView, forActiveTripWithDriver: Bool, withKey key: String?) {
+        
         //eerst checken als er annotations zijn
         if mapView.annotations.count == 0 {
             return
