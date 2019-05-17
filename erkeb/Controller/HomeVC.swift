@@ -12,6 +12,11 @@ import CoreLocation
 import Firebase
 import RevealingSplashView
 
+enum AnnotationType {
+    case pickup
+    case destination
+    case driver
+}
 
 class HomeVC: UIViewController, Alertable{
 
@@ -144,6 +149,7 @@ class HomeVC: UIViewController, Alertable{
                                 
                                 self.dropPinFor(placemark: pickupPlacemark)
                                 self.searchResultsWithPolyline(forOriginMapItem: nil, withDestinationMapItem: MKMapItem(placemark: pickupPlacemark))
+                                self.setCustomRegion(forAnnotationType: .pickup, withCoordinate: pickupCoordinate)
                             }
                         }
                     }
@@ -346,6 +352,38 @@ extension HomeVC: CLLocationManagerDelegate{
             // als de gerbuiker beweegt dan gaat de pin in het midden van de scherm blijven en kaart zal dan volgen
             mapView.userTrackingMode =  .follow
         }
+    }
+    
+    //Als we in de pickup zone terecht komen dan krijgt de bestuurder te zien op de knop Begin rit
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        let currentUserId = Auth.auth().currentUser?.uid
+        DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler: { (isOnTrip, driverKey, passengerKey) in
+            if isOnTrip == true {
+                if region.identifier == "pickup" {
+                    self.boekEenRitBtn.setTitle("Begin rit", for: .normal)
+                    print("De bestuurder stapt in de pikcup zone")
+                } else if region.identifier == "destination" {
+                    self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                    self.cancelBtn.isHidden = true
+                    self.boekEenRitBtn.setTitle("Eind rit", for: .normal)
+                }
+            }
+        })
+    }
+    
+    //De boek een rit knop zal je de routebeschrijving naar de passagier en de bestemming van de passagier geven via de ingebouwde apple gps app
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        let currentUserId = Auth.auth().currentUser?.uid
+        DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
+            if isOnTrip == true {
+                if region.identifier == "pickup" {
+                    print("De bestuurder verlaat de pickup zone")
+                    self.boekEenRitBtn.setTitle("Routebeschrijving", for: .normal)
+                } else if region.identifier == "destination" {
+                    self.boekEenRitBtn.setTitle("Routebeschrijving", for: .normal)
+                }
+            }
+        })
     }
 }
 
@@ -570,6 +608,17 @@ extension HomeVC: MKMapViewDelegate{
             if overlay is MKPolyline {
                 mapView.removeOverlay(overlay)
             }
+        }
+    }
+    
+    //zone dat aangeeft dat de bestuurder en passagier 100m van elkaar zijn
+    func setCustomRegion(forAnnotationType type: AnnotationType, withCoordinate coordinate: CLLocationCoordinate2D){
+        if type == .pickup {
+            let pikcupRegion = CLCircularRegion(center: coordinate, radius: 100, identifier: "pickup")
+            manager?.startMonitoring(for: pikcupRegion)
+        } else if type == .destination{
+            let destinationRegion = CLCircularRegion(center: coordinate, radius: 100, identifier: "destination")
+            manager?.startMonitoring(for: destinationRegion)
         }
     }
 }
