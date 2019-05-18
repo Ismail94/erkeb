@@ -18,6 +18,14 @@ enum AnnotationType {
     case driver
 }
 
+enum ButtonAction {
+    case requestRit
+    case getRoutebeschrijvingToPassenger
+    case getRoutebeschrijvingToBestemming
+    case startRit
+    case endRit
+}
+
 class HomeVC: UIViewController, Alertable{
 
     @IBOutlet weak var mapView: MKMapView!
@@ -43,6 +51,8 @@ class HomeVC: UIViewController, Alertable{
     var route: MKRoute!
     
     var selectedItemPlaceMark: MKPlacemark? = nil
+    
+    var actionForButton: ButtonAction = .requestRit
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,13 +80,12 @@ class HomeVC: UIViewController, Alertable{
             })
         })
         
+        cancelBtn.alpha = 0.0
+        
         //Set the launchscreen animation
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.squeezeAndZoomOut
         revealingSplashView.startAnimation()
-        
-        //Call to stop the animation
-        revealingSplashView.heartAttack = true
         
         //hier wordt de oppak plaats van de passagier doorgegeven naar de bestuurder zodat hij die kan oppaken (scherm PickupVC)
         UpdateService.instance.observeTrips { (tripDict) in
@@ -115,6 +124,12 @@ class HomeVC: UIViewController, Alertable{
             print("Doesn’t contain a value.")
         }
         
+        DataService.instance.userIsDriver(userKey: currentUserId!, handler: { (status) in
+            if status == true {
+                self.buttonsForDriver(areHidden: true)
+            }
+        })
+        
         DataService.instance.REF_TRIPS.observe(.childRemoved, with: { (removedTripSnapshot) in
             let removedTripDict = removedTripSnapshot.value as? [String: AnyObject]
             if removedTripDict?["driverKey"] != nil {
@@ -150,6 +165,11 @@ class HomeVC: UIViewController, Alertable{
                                 self.dropPinFor(placemark: pickupPlacemark)
                                 self.searchResultsWithPolyline(forOriginMapItem: nil, withDestinationMapItem: MKMapItem(placemark: pickupPlacemark))
                                 self.setCustomRegion(forAnnotationType: .pickup, withCoordinate: pickupCoordinate)
+                                
+                                self.actionForButton = .getRoutebeschrijvingToPassenger
+                                self.boekEenRitBtn.setTitle("Routebeschrijving", for: .normal)
+                                
+                               self.buttonsForDriver(areHidden: false)
                             }
                         }
                     }
@@ -165,6 +185,25 @@ class HomeVC: UIViewController, Alertable{
             manager?.startUpdatingLocation()
         } else{
             manager?.requestAlwaysAuthorization()
+        }
+    }
+    
+    //hier maak ik de knoppen voor de bestuurder zichtbaar
+    func buttonsForDriver(areHidden: Bool){
+        if areHidden{
+            self.boekEenRitBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+            self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+            self.centerMapBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+            self.boekEenRitBtn.isHidden = true
+            self.cancelBtn.isHidden = true
+            self.centerMapBtn.isHidden = true
+        } else {
+            self.boekEenRitBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+            self.cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+            self.centerMapBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+            self.boekEenRitBtn.isHidden = false
+            self.cancelBtn.isHidden = false
+            self.centerMapBtn.isHidden = false
         }
     }
     
@@ -215,6 +254,8 @@ class HomeVC: UIViewController, Alertable{
                 }
             }
         })
+        //Call om de animatie te beëindigen
+        revealingSplashView.heartAttack = true
     }
     
     func connectUserAndDriverForTrip() {
@@ -310,11 +351,7 @@ class HomeVC: UIViewController, Alertable{
     
     
     @IBAction func boekEenRitBtnWasPressed(_ sender: Any) {
-        UpdateService.instance.updateTripsWithCoordinatesUponRequest()
-        boekEenRitBtn.animateButton(shouldLoad: true, withMessage: nil)
-        
-        self.view.endEditing(true)
-        bestemmingTextField.isUserInteractionEnabled = false
+        buttonSelector(forAction: actionForButton)
     }
     
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
@@ -340,6 +377,48 @@ class HomeVC: UIViewController, Alertable{
     
     @IBAction func menuBtnWasPressed(_ sender: Any) {
         delegate?.toggleMenuLeftPanel()
+    }
+    
+    func buttonSelector(forAction action: ButtonAction){
+        let currentUserId = Auth.auth().currentUser?.uid
+        
+        switch action {
+        case .requestRit:
+        //code instellen voor een rit te aanvragen
+            if bestemmingTextField.text != "" {
+                UpdateService.instance.updateTripsWithCoordinatesUponRequest()
+                boekEenRitBtn.animateButton(shouldLoad: true, withMessage: nil)
+                cancelBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+                
+                self.view.endEditing(true)
+                bestemmingTextField.isUserInteractionEnabled = false
+            }
+        case .getRoutebeschrijvingToPassenger:
+        //routebeschrijving krijgen tot en met de passagier
+            DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
+                if isOnTrip == true {
+                    DataService.instance.REF_TRIPS.child(tripKey!).observe(.value, with: {(tripSnapshot) in
+                        let tripDict = tripSnapshot.value as? Dictionary<String, AnyObject>
+                        
+                        let pickupCoordinateArray = tripDict?["pickupCoordinate"] as! NSArray
+                        let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupCoordinateArray[0] as! CLLocationDegrees, longitude: pickupCoordinateArray[1] as! CLLocationDegrees)
+                        
+                        let pickupMapItem = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate))
+                        pickupMapItem.name = "Passagier ophaalplaats"
+                        pickupMapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
+                    })
+                }
+            })
+        case .startRit:
+            //rit beginnen
+            print("Begin geslecteerde rit")
+        case .getRoutebeschrijvingToBestemming:
+            //routebeschrijving tot en met de bestemming
+             print("Routebeschrijving naar bestemming")
+        case .endRit:
+            //einde van de rit
+            print("Einde rit")
+        }
     }
     
 }
