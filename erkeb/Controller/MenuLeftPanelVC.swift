@@ -26,8 +26,6 @@ class MenuLeftPanelVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
     }
     
     //Dankzij dit functie gaan de elementen al gestart zijn voordat ze te zien zijn
@@ -47,13 +45,13 @@ class MenuLeftPanelVC: UIViewController {
             userAccountTypeLbl.text = ""
             userAccountView.isHidden = true
             userImageView.isHidden = true
-            inUitloggenBtn.setTitle("Inloggen", for: .normal)
+            inUitloggenBtn.setTitle(MSG_INLOGGEN, for: .normal)
         } else {
             userMailLbl.text = Auth.auth().currentUser?.email
             userAccountTypeLbl.text = ""
             userAccountView.isHidden = false
             userImageView.isHidden = false
-            inUitloggenBtn.setTitle("Uitloggen", for: .normal)
+            inUitloggenBtn.setTitle(MSG_UITLOGGEN, for: .normal)
         }
     }
     
@@ -62,8 +60,8 @@ class MenuLeftPanelVC: UIViewController {
         DataService.instance.REF_USERS.observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshot{
-                    if snap.key == Auth.auth().currentUser?.uid{
-                        self.userAccountTypeLbl.text = "Passagier"
+                    if snap.key == Auth.auth().currentUser?.uid {
+                        self.userAccountTypeLbl.text = ACCOUNT_TYPE_PASSAGIER
                     }
                 }
             }
@@ -71,12 +69,12 @@ class MenuLeftPanelVC: UIViewController {
         
         DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
-                for snap in snapshot{
-                    if snap.key == Auth.auth().currentUser?.uid{
-                        self.userAccountTypeLbl.text = "Bestuurder"
+                for snap in snapshot {
+                    if snap.key == Auth.auth().currentUser?.uid {
+                        self.userAccountTypeLbl.text = ACCOUNT_TYPE_BESTUURDER
                         self.switchBtn.isHidden = false
                         
-                        let switchStatus = snap.childSnapshot(forPath: "isPickupModeEnabled").value as! Bool
+                        let switchStatus = snap.childSnapshot(forPath: ACCOUNT_PICKUP_MODUS_AAN).value as! Bool
                         self.switchBtn.isOn = switchStatus
                         self.pickupModeLbl.isHidden = false
                     }
@@ -87,25 +85,25 @@ class MenuLeftPanelVC: UIViewController {
     
     @IBAction func switchWasToggled(_ sender: Any) {
         if switchBtn.isOn{
-            pickupModeLbl.text = "Pick-up modus aan"
+            pickupModeLbl.text = MSG_PICKUP_MODUS_AAN
             //als je aan modus switch dan sluit de menu panel zich en opent automatisch de kaart
             appDelegate.MenuContainerVC.toggleMenuLeftPanel()
-            DataService.instance.REF_DRIVERS.child(currentUserId!).updateChildValues(["isPickupModeEnabled" : true])
-        } else{
-            pickupModeLbl.text = "Pick-up modus uit"
+            DataService.instance.REF_DRIVERS.child(currentUserId!).updateChildValues([ACCOUNT_PICKUP_MODUS_AAN : true])
+        } else {
+            pickupModeLbl.text = MSG_PICKUP_MODUS_UIT
             appDelegate.MenuContainerVC.toggleMenuLeftPanel()
-            DataService.instance.REF_DRIVERS.child(currentUserId!).updateChildValues(["isPickupModeEnabled" : false])
+            DataService.instance.REF_DRIVERS.child(currentUserId!).updateChildValues([ACCOUNT_PICKUP_MODUS_AAN : false])
         }
     }
     
     @IBAction func inloggenBtnWasPressed(_ sender: Any) {
         //Access storyboard
         if Auth.auth().currentUser == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let inloggenVC = storyboard.instantiateViewController(withIdentifier: "InloggenVC") as? InloggenVC
+            let storyboard = UIStoryboard(name: MAIN_STORYBOARD, bundle: Bundle.main)
+            let inloggenVC = storyboard.instantiateViewController(withIdentifier: VC_INLOGGEN) as? InloggenVC
             present(inloggenVC!, animated: true, completion: nil)
-        } else{
-            do{
+        } else {
+            do {
                 try Auth.auth().signOut()
                 userImageView.isHidden = true
                 userMailLbl.text = ""
@@ -113,12 +111,10 @@ class MenuLeftPanelVC: UIViewController {
                 userAccountView.isHidden = true
                 pickupModeLbl.text = ""
                 switchBtn.isHidden = true
-                inUitloggenBtn.setTitle("Inloggen", for: .normal)
-            } catch let(error){
+                inUitloggenBtn.setTitle(MSG_INLOGGEN, for: .normal)
+            } catch (let error) {
                 print(error)
             }
         }
-        
     }
-    
 }

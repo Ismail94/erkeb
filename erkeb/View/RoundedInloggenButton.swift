@@ -48,7 +48,7 @@ class RoundedInloggenButton: UIButton {
         }else{
             self.isUserInteractionEnabled = true
             for subview in self.subviews{
-                if subview.tag == 21{
+                if subview.tag == 21 {
                     subview.removeFromSuperview()
                 }
             }

@@ -29,13 +29,14 @@ class PickupVC: UIViewController {
         pickupMapView.delegate = self
 
         locationPlacemark = MKPlacemark(coordinate: pickupCoordinate)
+        
         dropPinFor(placemark: locationPlacemark)
         centerMapOnLocation(location: locationPlacemark.location!)
         
         //Als een bestuurder een rit aanvaard dan wordt deze bij de andere bestuurders niet meer zichtbaar
         DataService.instance.REF_TRIPS.child(passengerKey).observe(.value, with: { (tripSnapshot) in
             if tripSnapshot.exists(){
-                if tripSnapshot.childSnapshot(forPath: "tripIsAccepted").value as? Bool == true{
+                if tripSnapshot.childSnapshot(forPath: RIT_IS_AANVAARD).value as? Bool == true{
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
@@ -64,25 +65,25 @@ extension PickupVC: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pickupPunt"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil{
+        if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         } else {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "PassengerAnnotation")
+        
         return annotationView
     }
     
-    func centerMapOnLocation(location: CLLocation){
+    func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         pickupMapView.setRegion(coordinateRegion, animated: true)
-        
     }
     
-    func dropPinFor(placemark: MKPlacemark){
+    func dropPinFor(placemark: MKPlacemark) {
         pin = placemark
         
-        for annotation in pickupMapView.annotations{
+        for annotation in pickupMapView.annotations {
             pickupMapView.removeAnnotation(annotation)
         }
         

@@ -22,55 +22,50 @@ class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
         
         mailField.delegate = self
         wachtwoordField.delegate = self
-        
         view.bindToKeyboard()
         
         //tap somewhere on the screen to hide keyboard
-        let tap = UITapGestureRecognizer(target: self, action: #selector(moveKeyboardTap))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(moveKeyboardTap(sender:)))
         self.view.addGestureRecognizer(tap)
     }
     
     //stop the editing mode (when you put text inside the field)
-    @objc func moveKeyboardTap(sender: UITapGestureRecognizer){
+    @objc func moveKeyboardTap(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-       
     }
     
     @IBAction func aanmeldenBtnWasPressed(_ sender: Any) {
         
         //Als tekst is in de beide tekst velden dan wordt er verder een variabele hiervan gemaakt
-        if mailField.text != nil && wachtwoordField.text != nil{
+        if mailField.text != nil && wachtwoordField.text != nil {
             aanmeldenBtn.animateButton(shouldLoad: true, withMessage: nil)
             self.view.endEditing(true)
             
-            //Variabelen worden hier aangemaakt
-            if let mail = mailField.text, let wachtwoord = wachtwoordField.text{
-                
+            if let mail = mailField.text, let wachtwoord = wachtwoordField.text {
                 // Functie om de wachtwoord en mail doorsturen naar data
                 Auth.auth().signIn(withEmail: mail, password: wachtwoord, completion: {(authResult, error) in
                     if  error == nil {
                         if let user = authResult?.user {
-                            if self.segmentedControl.selectedSegmentIndex == 0{
+                            if self.segmentedControl.selectedSegmentIndex == 0 {
                                 let userData = ["provider": user.providerID] as [String: Any]
                                 DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
                             } else {
-                                let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                let userData = ["provider": user.providerID, GEBRUIKER_IS_BESTUURDER: true, ACCOUNT_PICKUP_MODUS_AAN: false, BESTUURDER_IS_OP_RIT: false] as [String: Any]
                                 DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
                             }
                         }
-                        print("De gebuiker is met succes ingelogd")
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         if let errorCode = AuthErrorCode(rawValue: error!._code){
                             switch errorCode {
                             case .wrongPassword:
-                                self.showAlert("Oei! Uw wachtwoord is verkeerd, probeer opnieuw.")
+                                self.showAlert(ERROR_MSG_VERKEERD_WACHTWOORD)
                             default:
-                                self.showAlert("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                                self.showAlert(ERROR_MSG_ONVERWACHTE_FOUT)
                             }
                         }
                         //Bepaalde fouten die er kunnen zijn tijdens het inloggen
@@ -78,12 +73,10 @@ class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
                             if error != nil {
                                 if let errorCode = AuthErrorCode(rawValue: error!._code) {
                                     switch errorCode{
-                                    case .emailAlreadyInUse:
-                                        self.showAlert("Dit email adres is al in gebruik, probeer opnieuw.")
                                     case .invalidEmail:
-                                        self.showAlert("Uw email adres is ongeldig, probeer opnieuw.")
+                                        self.showAlert(ERROR_MSG_ONGELDIG_MAIL)
                                     default:
-                                        self.showAlert("Er is een onverwachte fout opgetreden, probeer opnieuw.")
+                                        self.showAlert(ERROR_MSG_ONVERWACHTE_FOUT)
                                     }
                                 }
                             } else {
@@ -93,11 +86,10 @@ class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
                                             let userData = ["provider": user.providerID] as [String: Any]
                                             DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: false)
                                         } else {
-                                            let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                            let userData = ["provider": user.providerID, GEBRUIKER_IS_BESTUURDER: true, ACCOUNT_PICKUP_MODUS_AAN: false, BESTUURDER_IS_OP_RIT: false] as [String: Any]
                                             DataService.instance.createFirebaseDBUser(uid: user.uid, userData: userData, isDriver: true)
                                         }
                                     }
-                                    print("Er werd een nieuwe gebruiker aangemaakt via Firebase")
                                     self.dismiss(animated: true, completion: nil)
                                 }
                             })
@@ -106,5 +98,4 @@ class InloggenVC: UIViewController, UITextFieldDelegate, Alertable {
                 }
             }
         }
-    
 }

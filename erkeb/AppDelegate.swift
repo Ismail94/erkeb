@@ -24,10 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        
         containerVC = ContainerVC()
+        
         window?.rootViewController = containerVC
         window?.makeKeyAndVisible()
+        
         return true
     }
 

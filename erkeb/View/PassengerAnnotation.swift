@@ -20,5 +20,4 @@ class PassengerAnnotation: NSObject, MKAnnotation{
         self.key = key
         super.init()
     }
-    
 }
