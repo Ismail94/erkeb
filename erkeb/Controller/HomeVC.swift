@@ -303,7 +303,9 @@ class HomeVC: UIViewController, Alertable{
                                 self.searchResultsWithPolyline(forOriginMapItem: pickupMapItem, withDestinationMapItem: MKMapItem(placemark: destinationPlacemark))
                                 
                                 self.boekEenRitBtn.setTitle(MSG_PANIEK, for: .normal)
-                                //Knop van kleur veranderen en acions aanpassen
+////                                Knop van kleur veranderen en acions aanpassen
+//                                self.boekEenRitBtn.setBackgroundImage(UIImage.init(named: "PaniekBtn"), for: .normal)
+//                                self.boekEenRitBtn.isUserInteractionEnabled = true
                             }
                         })
                     }
@@ -369,7 +371,7 @@ class HomeVC: UIViewController, Alertable{
     }
     
     //in deze functie worden bepaalde gevallen aangemaakt zoals: een rit boeken, routebeschrijving naar passagier/bestemming, rit starten/stoppen
-    func buttonSelector(forAction action: ButtonAction){
+    func buttonSelector(forAction action: ButtonAction) {
         let currentUserId = Auth.auth().currentUser?.uid
         
         switch action {
@@ -438,12 +440,12 @@ class HomeVC: UIViewController, Alertable{
             })
         case .endRit:
             //einde van de rit
-            DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
+         DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
                     UpdateService.instance.cancelTrip(withPassengerKey: tripKey!, forDriverKey: driverKey!)
                     self.buttonsForDriver(areHidden: true)
-                }
-            })
+               }
+           })
         }
     }
 }
