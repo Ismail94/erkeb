@@ -11,7 +11,7 @@ target 'erkeb' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'RevealingSplashView'
-    pod 'TTSegmentedControl'
-
+    pod 'Cosmos', '~> 18.0'
+    pod 'TinyConstraints'
 
 end

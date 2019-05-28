@@ -64,7 +64,7 @@ let MSG_EINDIG_RIT = "Eindig rit"
 let MSG_ROUTEBESCHRIJVING = "Routebeschrijving"
 let MSG_ANNULEER_RIT = "Annuleer"
 let MSG_BESTUURDER_ONDERWEG = "Bestuurder is onderweg"
-let MSG_PANIEK = "Bel 101"
+let MSG_PANIEK = "Paniek"
 let MSG_PASSAGIER_PICKUP = "Passagier Ophaalplaats"
 let MSG_PASSAGIER_BESTEMMING = "Passagier Bestemming"
 

@@ -6,7 +6,8 @@
   "data" : [
     {
       "idiom" : "universal",
-      "filename" : "PaniekBtn.svg"
+      "filename" : "PaniekBtn.svg",
+      "universal-type-identifier" : "public.svg-image"
     }
   ]
 }

@@ -15,6 +15,11 @@ class MenuLeftPanelVC: UIViewController {
     
     let currentUserId = Auth.auth().currentUser?.uid
     
+    @IBOutlet weak var profielBtn: UIButton!
+    @IBOutlet weak var betalingenBtn: UIButton!
+    @IBOutlet weak var erkebFamBtn: UIButton!
+    @IBOutlet weak var helpBtn: UIButton!
+    
     @IBOutlet weak var userImageView: RoundedImageView!
     @IBOutlet weak var userMailLbl: UILabel!
     @IBOutlet weak var userAccountTypeLbl: UILabel!
@@ -39,18 +44,26 @@ class MenuLeftPanelVC: UIViewController {
         
         checkPassagiersEnBestuurders()
         
-        //Als je geen acount beschikt dan kan je alleen het registreer knop zien
+        //Als je geen acount beschikt dan kan je alleen het inloggen knop zien
         if Auth.auth().currentUser == nil {
             userMailLbl.text = ""
             userAccountTypeLbl.text = ""
             userAccountView.isHidden = true
             userImageView.isHidden = true
+            profielBtn.isHidden = true
+            betalingenBtn.isHidden = true
+            erkebFamBtn.isHidden = true
+            helpBtn.isHidden = true
             inUitloggenBtn.setTitle(MSG_INLOGGEN, for: .normal)
         } else {
             userMailLbl.text = Auth.auth().currentUser?.email
             userAccountTypeLbl.text = ""
             userAccountView.isHidden = false
             userImageView.isHidden = false
+            profielBtn.isHidden = false
+            betalingenBtn.isHidden = false
+            erkebFamBtn.isHidden = false
+            helpBtn.isHidden = false
             inUitloggenBtn.setTitle(MSG_UITLOGGEN, for: .normal)
         }
     }
@@ -111,6 +124,10 @@ class MenuLeftPanelVC: UIViewController {
                 userAccountView.isHidden = true
                 pickupModeLbl.text = ""
                 switchBtn.isHidden = true
+                profielBtn.isHidden = true
+                betalingenBtn.isHidden = true
+                erkebFamBtn.isHidden = true
+                helpBtn.isHidden = true
                 inUitloggenBtn.setTitle(MSG_INLOGGEN, for: .normal)
             } catch (let error) {
                 print(error)

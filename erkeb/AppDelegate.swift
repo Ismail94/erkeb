@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+ 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         containerVC = ContainerVC()
         
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        var intialViewController = sb.instantiateViewController(withIdentifier: "WelkomVC")
+//
+//        let userDefaults = UserDefaults.standard
+//
+//        if userDefaults.bool(forKey: "WelkomIntroIsOk"){
+//            intialViewController = sb.instantiateViewController(withIdentifier: "HomeVC")
+//        }
+//
+//        window?.rootViewController = intialViewController
+//        window?.makeKeyAndVisible()
+        
+        //normaal juist onder lijn 28 maar menu schuift niet open
         window?.rootViewController = containerVC
         window?.makeKeyAndVisible()
         

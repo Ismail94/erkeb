@@ -12,6 +12,7 @@ import CoreLocation
 import Firebase
 import RevealingSplashView
 
+
 enum AnnotationType {
     case pickup
     case destination
@@ -24,6 +25,7 @@ enum ButtonAction {
     case getRoutebeschrijvingToBestemming
     case startRit
     case endRit
+    case paniekCall
 }
 
 class HomeVC: UIViewController, Alertable{
@@ -68,7 +70,10 @@ class HomeVC: UIViewController, Alertable{
         
         centerMapOnUserLocation()
         
-        DataService.instance.REF_DRIVERS.observe(.value, with:  { (snapshot) in
+        let currentUserId = Auth.auth().currentUser?.uid
+        
+        if currentUserId != nil {
+        DataService.instance.REF_DRIVERS.observe(.value, with: { (snapshot) in
         self.loadDriverAnnotationFromFB()
             
         let currentUserId = Auth.auth().currentUser?.uid
@@ -76,9 +81,10 @@ class HomeVC: UIViewController, Alertable{
             DataService.instance.passengerIsOnTrip(passengerKey: currentUserId!, handler: { (isOnTrip, driverKey, tripKey) in
                 if isOnTrip == true {
                     self.zoom(toFitAnnotationsFromMapView: self.mapView, forActiveTripWithDriver: true, withKey: driverKey)
-                }
+                    }
+                })
             })
-        })
+        }
         
         cancelBtn.alpha = 0.0
         
@@ -120,10 +126,27 @@ class HomeVC: UIViewController, Alertable{
             DataService.instance.userIsDriver(userKey: currentUserId!, handler: { (status) in
                 if status == true {
                     self.buttonsForDriver(areHidden: true)
+                    self.bestemmingTextField.isUserInteractionEnabled = false
+                    self.bestemmingTextField.text = "Rijdt voorzichtig 🙏"
+                    self.bestemmingTextField.textColor = UIColor(red: 0.95, green: 0.93, blue: 0.99, alpha: 1.0)
                 }
             })
         }
-     
+        
+        if currentUserId != nil {
+            self.bestemmingTextField.isUserInteractionEnabled = true
+            self.bestemmingTextField.textColor = UIColor(red: 0.95, green: 0.93, blue: 0.99, alpha: 1.0)
+            self.boekEenRitBtn.isHidden = false
+            self.centerMapBtn.isHidden = false
+            self.bestemmingTextField.text = ""
+        } else {
+            self.bestemmingTextField.isUserInteractionEnabled = false
+            self.bestemmingTextField.text = "Wil je een rit boeken log je snel in 😁"
+            self.bestemmingTextField.textColor = UIColor(red: 0.95, green: 0.93, blue: 0.99, alpha: 1.0)
+            self.boekEenRitBtn.isHidden = true
+            self.centerMapBtn.isHidden = true
+        }
+        
         DataService.instance.REF_TRIPS.observe(.childRemoved, with: { (removedTripSnapshot) in
             let removedTripDict = removedTripSnapshot.value as? [String: AnyObject]
             if removedTripDict?[BESTUURDER_KEY] != nil {
@@ -136,6 +159,13 @@ class HomeVC: UIViewController, Alertable{
                 } else {
                     self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
                     self.boekEenRitBtn.animateButton(shouldLoad: false, withMessage: MSG_RIT_BOEKEN)
+                    self.boekEenRitBtn.setBackgroundImage(UIImage.init(named: ""), for: .normal)
+                    
+                    //Rating stars
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "PopupVC") as UIViewController
+                    self.present(vc, animated: true, completion: nil)
+
                     
                     self.bestemmingTextField.isUserInteractionEnabled = true
                     self.bestemmingTextField.text = ""
@@ -303,9 +333,10 @@ class HomeVC: UIViewController, Alertable{
                                 self.searchResultsWithPolyline(forOriginMapItem: pickupMapItem, withDestinationMapItem: MKMapItem(placemark: destinationPlacemark))
                                 
                                 self.boekEenRitBtn.setTitle(MSG_PANIEK, for: .normal)
-////                                Knop van kleur veranderen en acions aanpassen
-//                                self.boekEenRitBtn.setBackgroundImage(UIImage.init(named: "PaniekBtn"), for: .normal)
-//                                self.boekEenRitBtn.isUserInteractionEnabled = true
+                                
+                                self.boekEenRitBtn.setBackgroundImage(UIImage.init(named: "PaniekBtn"), for: .normal)
+                                self.boekEenRitBtn.isUserInteractionEnabled = true
+                                self.actionForButton = .paniekCall
                             }
                         })
                     }
@@ -323,6 +354,7 @@ class HomeVC: UIViewController, Alertable{
     @IBAction func boekEenRitBtnWasPressed(_ sender: Any) {
         buttonSelector(forAction: actionForButton)
     }
+    
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         let currentUserId = Auth.auth().currentUser?.uid
@@ -385,6 +417,7 @@ class HomeVC: UIViewController, Alertable{
                 self.view.endEditing(true)
                 bestemmingTextField.isUserInteractionEnabled = false
             }
+            
         case .getRoutebeschrijvingToPassenger:
         //routebeschrijving krijgen tot en met de passagier
             DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
@@ -401,6 +434,7 @@ class HomeVC: UIViewController, Alertable{
                     })
                 }
             })
+            
         case .startRit:
             //rit beginnen
                 DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
@@ -423,6 +457,15 @@ class HomeVC: UIViewController, Alertable{
                         })
                     }
                 })
+            
+        case .paniekCall:
+            print("paniek call is ok after pressed")
+            if let number = URL(string: "tel://" + "101"){
+                UIApplication.shared.open(number)
+            } else {
+                return
+            }
+            
         case .getRoutebeschrijvingToBestemming:
             //routebeschrijving tot en met de bestemming
             DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
@@ -438,6 +481,7 @@ class HomeVC: UIViewController, Alertable{
                     })
                 }
             })
+            
         case .endRit:
             //einde van de rit
          DataService.instance.driverIsOnTrip(driverKey: currentUserId!, handler:  { (isOnTrip, driverKey, tripKey) in
@@ -469,10 +513,11 @@ extension HomeVC: CLLocationManagerDelegate {
                     self.actionForButton = .startRit
                     self.boekEenRitBtn.setTitle(MSG_BEGIN_RIT, for: .normal)
                 } else if region.identifier == REGION_BESTEMMING {
-                    self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
-                    self.cancelBtn.isHidden = true
+                    print("Aangekomen in eind rit zone ")
                     self.actionForButton = .endRit
                     self.boekEenRitBtn.setTitle(MSG_EINDIG_RIT, for: .normal)
+                    self.cancelBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
+                    self.cancelBtn.isHidden = true
                 }
             }
         })

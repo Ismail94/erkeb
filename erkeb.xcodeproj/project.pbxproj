@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		4A2FE71222771ABA0098AA1B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2FE71122771ABA0098AA1B /* DataService.swift */; };
 		4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A346343227E22B9009E1DC1 /* UpdateService.swift */; };
 		4A346346227E36A7009E1DC1 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A346345227E36A7009E1DC1 /* DriverAnnotation.swift */; };
+		4A40E1C4229C4A0B0030BABA /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A40E1C3229C4A0B0030BABA /* PopupVC.swift */; };
 		4A65653D2271F62600219D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653C2271F62600219D06 /* AppDelegate.swift */; };
 		4A65653F2271F62600219D06 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65653E2271F62600219D06 /* HomeVC.swift */; };
 		4A6565422271F62600219D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6565402271F62600219D06 /* Main.storyboard */; };
@@ -27,7 +28,12 @@
 		4A80116F2274E9BE0022C3FA /* InloggenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80116E2274E9BE0022C3FA /* InloggenVC.swift */; };
 		4A97AB52228730EE005F36B4 /* PickupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB51228730EE005F36B4 /* PickupVC.swift */; };
 		4A97AB542287336C005F36B4 /* RoundedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97AB532287336C005F36B4 /* RoundedMapView.swift */; };
+		4AA1BDF322997AC000313714 /* WelkomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA1BDF222997AC000313714 /* WelkomVC.swift */; };
 		4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */; };
+		4AB83B5E229824AD00CCEAFF /* BetalingenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB83B5D229824AD00CCEAFF /* BetalingenVC.swift */; };
+		4AB83B60229824E100CCEAFF /* ErkebFamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB83B5F229824E100CCEAFF /* ErkebFamVC.swift */; };
+		4AB83B622298250100CCEAFF /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB83B612298250100CCEAFF /* HelpVC.swift */; };
+		4AB83B642298252200CCEAFF /* ProfielVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB83B632298252200CCEAFF /* ProfielVC.swift */; };
 		4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */; };
 		4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */; };
 		4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */; };
@@ -36,7 +42,7 @@
 		4AE4086E2285A13400694A3A /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */; };
 		4AF3844122930A85000F3527 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3844022930A85000F3527 /* Constants.swift */; };
 		4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5EB972286FD2A00C1E183 /* Alertable.swift */; };
-		B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */; };
+		604C40BB28BE32FF161FB14A /* Pods_erkeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C701A53C439FB242EE4C998 /* Pods_erkeb.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +55,7 @@
 		4A2FE71122771ABA0098AA1B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4A346343227E22B9009E1DC1 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		4A346345227E36A7009E1DC1 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
+		4A40E1C3229C4A0B0030BABA /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		4A6565392271F62600219D06 /* erkeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = erkeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A65653C2271F62600219D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A65653E2271F62600219D06 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -56,14 +63,18 @@
 		4A6565432271F62700219D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A6565462271F62700219D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A6565482271F62700219D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A68E6F7F15CE4B4AEA74080 /* Pods-erkeb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.release.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.release.xcconfig"; sourceTree = "<group>"; };
 		4A80116622747C470022C3FA /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		4A80116922748B3E0022C3FA /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		4A80116C2274C4EB0022C3FA /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		4A80116E2274E9BE0022C3FA /* InloggenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InloggenVC.swift; sourceTree = "<group>"; };
 		4A97AB51228730EE005F36B4 /* PickupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupVC.swift; sourceTree = "<group>"; };
 		4A97AB532287336C005F36B4 /* RoundedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedMapView.swift; sourceTree = "<group>"; };
+		4AA1BDF222997AC000313714 /* WelkomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelkomVC.swift; sourceTree = "<group>"; };
 		4AB27FDC22734AFC000E3B24 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		4AB83B5D229824AD00CCEAFF /* BetalingenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetalingenVC.swift; sourceTree = "<group>"; };
+		4AB83B5F229824E100CCEAFF /* ErkebFamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErkebFamVC.swift; sourceTree = "<group>"; };
+		4AB83B612298250100CCEAFF /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
+		4AB83B632298252200CCEAFF /* ProfielVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfielVC.swift; sourceTree = "<group>"; };
 		4AD5C37E22734CF300CA3A92 /* RoundedLocationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLocationForm.swift; sourceTree = "<group>"; };
 		4AD5C3802273504400CA3A92 /* CircleLocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLocationFormView.swift; sourceTree = "<group>"; };
 		4AD5C38222735F2000CA3A92 /* RoundedBoekEenRitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBoekEenRitButton.swift; sourceTree = "<group>"; };
@@ -72,8 +83,9 @@
 		4AE4086D2285A13400694A3A /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		4AF3844022930A85000F3527 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4AF5EB972286FD2A00C1E183 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
-		58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
+		6AA515EED4E810CF0574DA5F /* Pods-erkeb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.release.xcconfig"; path = "Target Support Files/Pods-erkeb/Pods-erkeb.release.xcconfig"; sourceTree = "<group>"; };
+		8C701A53C439FB242EE4C998 /* Pods_erkeb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_erkeb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9106B6DD314DCC2DC11A1208 /* Pods-erkeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-erkeb.debug.xcconfig"; path = "Target Support Files/Pods-erkeb/Pods-erkeb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,20 +93,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B766CA26C21C93D73D717E3C /* Pods_erkeb.framework in Frameworks */,
+				604C40BB28BE32FF161FB14A /* Pods_erkeb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B7869605B36C5240794DF6F /* Pods */ = {
+		3A0B93313D4AA900A03E0677 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */,
-				4A68E6F7F15CE4B4AEA74080 /* Pods-erkeb.release.xcconfig */,
+				9106B6DD314DCC2DC11A1208 /* Pods-erkeb.debug.xcconfig */,
+				6AA515EED4E810CF0574DA5F /* Pods-erkeb.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		428C5C4DA80013FC6FDAAB9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C701A53C439FB242EE4C998 /* Pods_erkeb.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4A2FE71022771AA30098AA1B /* Services */ = {
@@ -111,8 +132,8 @@
 			children = (
 				4A65653B2271F62600219D06 /* erkeb */,
 				4A65653A2271F62600219D06 /* Products */,
-				0B7869605B36C5240794DF6F /* Pods */,
-				FDC567CCEEE12AA91B9109E8 /* Frameworks */,
+				3A0B93313D4AA900A03E0677 /* Pods */,
+				428C5C4DA80013FC6FDAAB9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +191,12 @@
 				4A80116622747C470022C3FA /* ContainerVC.swift */,
 				4A80116E2274E9BE0022C3FA /* InloggenVC.swift */,
 				4A97AB51228730EE005F36B4 /* PickupVC.swift */,
+				4AB83B5D229824AD00CCEAFF /* BetalingenVC.swift */,
+				4AB83B5F229824E100CCEAFF /* ErkebFamVC.swift */,
+				4AB83B612298250100CCEAFF /* HelpVC.swift */,
+				4AB83B632298252200CCEAFF /* ProfielVC.swift */,
+				4AA1BDF222997AC000313714 /* WelkomVC.swift */,
+				4A40E1C3229C4A0B0030BABA /* PopupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,14 +235,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FDC567CCEEE12AA91B9109E8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				58DF2EA7F81F745BDBE57BF7 /* Pods_erkeb.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,12 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A65654B2271F62700219D06 /* Build configuration list for PBXNativeTarget "erkeb" */;
 			buildPhases = (
-				3F9DB6E41AA15ABF73577B0E /* [CP] Check Pods Manifest.lock */,
+				75E3793440545E2B31431BAA /* [CP] Check Pods Manifest.lock */,
 				4A6565352271F62600219D06 /* Sources */,
 				4A6565362271F62600219D06 /* Frameworks */,
 				4A6565372271F62600219D06 /* Resources */,
-				1D1F345A0881A5A1E8070CBC /* [CP] Embed Pods Frameworks */,
-				C0F27E42AED76CE3DEE4C381 /* [CP] Copy Pods Resources */,
+				65D01254FD90187331C69565 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,7 +273,7 @@
 				};
 			};
 			buildConfigurationList = 4A6565342271F62600219D06 /* Build configuration list for PBXProject "erkeb" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -287,65 +305,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D1F345A0881A5A1E8070CBC /* [CP] Embed Pods Frameworks */ = {
+		65D01254FD90187331C69565 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-erkeb/Pods-erkeb-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
-				"${BUILT_PRODUCTS_DIR}/TTSegmentedControl/TTSegmentedControl.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-erkeb/Pods-erkeb-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTSegmentedControl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-erkeb/Pods-erkeb-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-erkeb/Pods-erkeb-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-erkeb/Pods-erkeb-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3F9DB6E41AA15ABF73577B0E /* [CP] Check Pods Manifest.lock */ = {
+		75E3793440545E2B31431BAA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-erkeb-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C0F27E42AED76CE3DEE4C381 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-erkeb/Pods-erkeb-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -356,10 +352,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AF3844122930A85000F3527 /* Constants.swift in Sources */,
+				4AB83B622298250100CCEAFF /* HelpVC.swift in Sources */,
 				4A80116F2274E9BE0022C3FA /* InloggenVC.swift in Sources */,
 				4A80116D2274C4EB0022C3FA /* UIViewExt.swift in Sources */,
 				4AD5C37F22734CF300CA3A92 /* RoundedLocationForm.swift in Sources */,
 				4A2FE70B22760AFA0098AA1B /* RoundedInloggenForm.swift in Sources */,
+				4AB83B5E229824AD00CCEAFF /* BetalingenVC.swift in Sources */,
+				4AA1BDF322997AC000313714 /* WelkomVC.swift in Sources */,
+				4A40E1C4229C4A0B0030BABA /* PopupVC.swift in Sources */,
 				4AE4086C22845EBB00694A3A /* PassengerAnnotation.swift in Sources */,
 				4A346346227E36A7009E1DC1 /* DriverAnnotation.swift in Sources */,
 				4A346344227E22B9009E1DC1 /* UpdateService.swift in Sources */,
@@ -367,6 +367,7 @@
 				4AF5EB982286FD2A00C1E183 /* Alertable.swift in Sources */,
 				4AB27FDD22734AFC000E3B24 /* RoundedImageView.swift in Sources */,
 				4A2FE70D22760B640098AA1B /* RoundedInloggenButton.swift in Sources */,
+				4AB83B60229824E100CCEAFF /* ErkebFamVC.swift in Sources */,
 				4A97AB52228730EE005F36B4 /* PickupVC.swift in Sources */,
 				4A65653F2271F62600219D06 /* HomeVC.swift in Sources */,
 				4A80116A22748B3E0022C3FA /* CenterVCDelegate.swift in Sources */,
@@ -377,6 +378,7 @@
 				4A2FE7092275FEFB0098AA1B /* RoundedTextField.swift in Sources */,
 				4AD5C38322735F2000CA3A92 /* RoundedBoekEenRitButton.swift in Sources */,
 				4AD5C3812273504400CA3A92 /* CircleLocationFormView.swift in Sources */,
+				4AB83B642298252200CCEAFF /* ProfielVC.swift in Sources */,
 				4A2FE71222771ABA0098AA1B /* DataService.swift in Sources */,
 				4A97AB542287336C005F36B4 /* RoundedMapView.swift in Sources */,
 				4A25514D227DBA290050FA09 /* AccountTypeRounded.swift in Sources */,
@@ -523,7 +525,7 @@
 		};
 		4A65654C2271F62700219D06 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C76A181F7A71FE8C8060B438 /* Pods-erkeb.debug.xcconfig */;
+			baseConfigurationReference = 9106B6DD314DCC2DC11A1208 /* Pods-erkeb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -542,7 +544,7 @@
 		};
 		4A65654D2271F62700219D06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A68E6F7F15CE4B4AEA74080 /* Pods-erkeb.release.xcconfig */;
+			baseConfigurationReference = 6AA515EED4E810CF0574DA5F /* Pods-erkeb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
